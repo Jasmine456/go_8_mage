@@ -3,7 +3,7 @@ package main // main()必须在main包中
 import (
 	"fmt" // 标准库里的一个包
 	"gonum.org/v1/gonum/stat" // 第三方依赖库，安装方式：go get -u gonum.org/v1/gonum/stat
-	"week01/extrance_class/util" // 引用工作目录里的其他包
+	"go_8_mage/week01/extrance_class/util" // 引用工作目录里的其他包
 
 )
 
