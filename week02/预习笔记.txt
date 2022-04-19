@@ -1,0 +1,30 @@
+## 基础数据类型
+1. 基础数据类型
+bool
+byte
+rune
+
+
+2. 复合数据类型
+array 数组 值类型
+struct 结构体 值类型
+string 字符串 UTF-8字符串
+slice (nil) 切片 引用类型
+map (nil) 引用类型
+channel (nil) 管道 引用类型
+interface (nil) 接口
+function (nil) 函数
+
+3. 自定义类型
+自定义类型和类型别名的区别
+
+类型别名
+type byte = uint8
+type rune = int32
+
+自定义类型：
+type signal uint8
+type ms map[string]string
+type add func(a,b int)int
+type user struct {name string;age int}
+
