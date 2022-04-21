@@ -1,5 +1,5 @@
 ---
-typora-root-url: img
+
 ---
 
 # Golang笔记\_第2周\_数据类型
@@ -26,7 +26,7 @@ typora-root-url: img
 
 #### 切片(slice)
 
-![image-20220421155901609](/../Golang笔记_第2周_数据类型.assets/image-20220421155901609.png)
+![avatar](Golang笔记_第2周_数据类型.assets/image-20220421155901609.png)
 
 
 
@@ -76,13 +76,13 @@ s2d := [][]int{
 
 ###### 二维数组的各行的len可以不相等代码演示
 
-![image-20220421155106593](/../Golang笔记_第2周_数据类型.assets/image-20220421155106593.png)
+![image-20220421155106593](Golang笔记_第2周_数据类型.assets/image-20220421155106593.png)
 
 
 
 ###### 一维切片初始化的代码演示
 
-![image-20220421155643527](/../Golang笔记_第2周_数据类型.assets/image-20220421155643527.png)
+![image-20220421155643527](Golang笔记_第2周_数据类型.assets/image-20220421155643527.png)
 
 
 
@@ -106,7 +106,7 @@ s2d := [][]int{
 
 ######  append操作代码演示
 
-![image-20220421160552135](/../Golang笔记_第2周_数据类型.assets/image-20220421160552135.png)
+![image-20220421160552135](Golang笔记_第2周_数据类型.assets/image-20220421160552135.png)
 
 
 
@@ -120,7 +120,7 @@ python中是s.append(num)就添加了
 
 
 
-![image-20220421160735695](/../Golang笔记_第2周_数据类型.assets/image-20220421160735695.png)
+![image-20220421160735695](Golang笔记_第2周_数据类型.assets/image-20220421160735695.png)
 
 
 
@@ -128,13 +128,13 @@ python中是s.append(num)就添加了
 
 ###### 验证slice的cap是否是呈两倍递增
 
-![image-20220421161016399](/../Golang笔记_第2周_数据类型.assets/image-20220421161016399.png)
+![image-20220421161016399](Golang笔记_第2周_数据类型.assets/image-20220421161016399.png)
 
 
 
 
 
-![image-20220421161349896](/../Golang笔记_第2周_数据类型.assets/image-20220421161349896.png)
+![image-20220421161349896](Golang笔记_第2周_数据类型.assets/image-20220421161349896.png)
 
 
 
@@ -144,13 +144,13 @@ python中是s.append(num)就添加了
 
 截取子切片
 
-![image-20220421162512735](/../Golang笔记_第2周_数据类型.assets/image-20220421162512735.png)
+![image-20220421162512735](Golang笔记_第2周_数据类型.assets/image-20220421162512735.png)
 
 
 
-![image-20220421162746641](/../Golang笔记_第2周_数据类型.assets/image-20220421162746641.png)
+![image-20220421162746641](Golang笔记_第2周_数据类型.assets/image-20220421162746641.png)
 
-![image-20220421162922309](/../Golang笔记_第2周_数据类型.assets/image-20220421162922309.png)
+![image-20220421162922309](Golang笔记_第2周_数据类型.assets/image-20220421162922309.png)
 
 
 
@@ -158,7 +158,7 @@ python中是s.append(num)就添加了
 
 ###### 字母切片的代码演示
 
-![image-20220421163720696](/../Golang笔记_第2周_数据类型.assets/image-20220421163720696.png)
+![image-20220421163720696](Golang笔记_第2周_数据类型.assets/image-20220421163720696.png)
 
 
 
@@ -175,13 +175,13 @@ python中是s.append(num)就添加了
 
 
 
-![image-20220421163922872](/../Golang笔记_第2周_数据类型.assets/image-20220421163922872.png)
+![image-20220421163922872](Golang笔记_第2周_数据类型.assets/image-20220421163922872.png)
 
 
 
 ###### 切片传参代码演示
 
-![image-20220421164304737](/../Golang笔记_第2周_数据类型.assets/image-20220421164304737.png)
+![image-20220421164304737](Golang笔记_第2周_数据类型.assets/image-20220421164304737.png)
 
 
 
@@ -191,7 +191,7 @@ python中是s.append(num)就添加了
 
 ##### 底层概念图示
 
-![image-20220421164422259](/../Golang笔记_第2周_数据类型.assets/image-20220421164422259.png)
+![image-20220421164422259](Golang笔记_第2周_数据类型.assets/image-20220421164422259.png)
 
 
 
@@ -207,7 +207,7 @@ python中是s.append(num)就添加了
 
 ##### map的初始化
 
-![image-20220421164922572](/../Golang笔记_第2周_数据类型.assets/image-20220421164922572.png)
+![image-20220421164922572](Golang笔记_第2周_数据类型.assets/image-20220421164922572.png)
 
 
 
@@ -224,7 +224,7 @@ python中是s.append(num)就添加了
 
 ##### 添加和删除key
 
-![image-20220421165125131](/../Golang笔记_第2周_数据类型.assets/image-20220421165125131.png)
+![image-20220421165125131](Golang笔记_第2周_数据类型.assets/image-20220421165125131.png)
 
 
 
@@ -236,7 +236,7 @@ python中是s.append(num)就添加了
 
 ##### 根据key找value
 
-![image-20220421165811839](/../Golang笔记_第2周_数据类型.assets/image-20220421165811839.png)
+![image-20220421165811839](Golang笔记_第2周_数据类型.assets/image-20220421165811839.png)
 
 
 
@@ -304,7 +304,7 @@ func main(){
 
 ##### 底层原理图
 
-![image-20220421173249851](/../Golang笔记_第2周_数据类型.assets/image-20220421173249851.png)
+![image-20220421173249851](Golang笔记_第2周_数据类型.assets/image-20220421173249851.png)
 
 
 
@@ -407,4 +407,4 @@ func main(){
 
 #### 作业
 
-![image-20220421181054551](/../Golang笔记_第2周_数据类型.assets/image-20220421181054551.png)
+![image-20220421181054551](Golang笔记_第2周_数据类型.assets/image-20220421181054551.png)
