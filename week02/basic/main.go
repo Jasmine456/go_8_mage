@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	//"golang.org/x/tools/go/analysis/passes/stringintconv/testdata/src/a"
+	"strings"
+)
 
 //演示基础数据类型的默认值
 func default_value(){
@@ -64,6 +68,39 @@ func (self ms)Say(){
 type mss = map[string]int
 
 
+type byt = uint8
+
+func str_func(){
+	s := "hello, how  are you"
+	fmt.Printf("%t\n",strings.HasPrefix(s,"he"))
+}
+
+func string_joint(){
+	s1,s2,s3 := "aaa","bbb","ccc"
+	S1 := s1+ " "+ s2 + " "+s3
+	S2 := fmt.Sprintf("%s %s %s",s1,s2,s3)
+	S3 := strings.Join([]string{s1,s2,s3}," ")
+
+	sb :=strings.Builder{}
+	sb.WriteString(s1)
+	sb.WriteString(" ")
+	sb.WriteString(s2)
+	sb.WriteString(" ")
+	sb.WriteString(s3)
+	sb.WriteString(" ")
+	S4 := sb.String()
+	fmt.Println(S1,S2,S3,S4)
+
+}
+
 func main(){
-	default_value()
+	//string_joint()
+	var a int
+	var b bool
+	var c [5]int
+	var u User
+	fmt.Printf("%p\n",&a)
+	fmt.Printf("%p\n",&b)
+	fmt.Printf("%p\n",&c)
+	fmt.Printf("%p\n",&u)
 }
