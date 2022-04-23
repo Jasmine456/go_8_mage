@@ -22,9 +22,119 @@
 
 #### 基础数据类型
 
-#### 自定义类型和字符串
+![image-20220423102826620](Golang%E7%AC%94%E8%AE%B0_%E7%AC%AC2%E5%91%A8_%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.assets/image-20220423102826620.png)
 
-#### 数组
+
+
+
+
+
+
+
+
+#### 复合数据类型
+
+![image-20220423094728436](Golang%E7%AC%94%E8%AE%B0_%E7%AC%AC2%E5%91%A8_%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.assets/image-20220423094728436.png)
+
+#### 自定义类型、类型别名
+
+```
+类型别名
+type byte = uint8
+type rune = int32
+type semaphore = uint8
+
+自定义类型
+type user struct{name string；age int} // 用分号把多行代码隔开
+type signal uint8
+type ms map[string]string
+type add func(a,b int)int
+```
+
+
+
+
+
+#### 字符串
+
+
+
+##### 字符串赋值
+
+```GO
+s1 := "My name is jasmine☺"
+s2 := "He say:\"I'm fine.\"\\Thank\tyou.\\" //包含转义字符
+s3 := `here is first line.
+
+there is third line.
+`//反引号里的转义字符无效。反引号里的内容原封不动的输出，包括空百符和换行符
+```
+
+
+
+##### 字符串常用操作
+
+| 方法                                 | 介绍           |      |
+| ------------------------------------ | -------------- | ---- |
+| len(str)                             | 求长度         |      |
+| strings.Split                        | 分割           |      |
+| strings.Contains                     | 判断是否包含   |      |
+| strings.HasPrefix，strings.HasSuffix | 前缀、后缀判断 |      |
+| strings.Index()，strings.LastIndex() | 子串出现的位置 |      |
+
+
+
+
+
+##### 字符串拼接
+
+> - 加号连接
+> - func fmt.Sprintf{format string, a ...interface{}} string
+> - func strings.Join(elems []string,sep string)string
+> - 当有大量的string 需要拼接时，用strings.Builder效率最高
+
+
+
+
+
+#### byte和rune
+
+> - string中每个元素叫”字符“，字符有两种
+>   - byte：1个字节，代表ASCII码的一个字符
+>   - rune：4个字节，代表一个UTF-8字符，一个汉字可用一个rune表示
+> - string底层是byte数组，string的长促就是改byte数组的长度，UTF-8编码下一个汉字占3个byte，即一个汉字占3个长度
+> - string可以转换为[]byte或[]rune类型
+> - string是常量，不能修改其中的字符
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Printf%字符的定义
+
+| 字符 | 含义       | 其他       |
+| ---- | ---------- | ---------- |
+| %d   | 整型       |            |
+| %s   | string     |            |
+| %t   | bool       |            |
+| %f   | float32/64 |            |
+| %p   | 指针       |            |
+| %v   | 引用类型   | %v %+v %#v |
+|      |            |            |
+
+
+
+
 
 
 
