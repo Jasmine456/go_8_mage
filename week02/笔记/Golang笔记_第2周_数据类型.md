@@ -447,6 +447,36 @@ ch = make(chan int,8) //初始化，环形队列里可容纳8个int
 
 
 
+##### 只读只写管道定义
+
+```
+read_only := make (<-chan int)   //定义只读的channel
+write_only := make (chan<- int)   //定义只写的channel
+```
+
+&#8195;&#8195;定义只读和只写的channel意义不大，一般用于在参数传递中。  
+
+```
+//只能向channel里写数据 
+func send(c chan<- int) { 
+    c <- 1 
+} 
+
+//只能取channel中的数据 
+func recv(c <-chan int) {
+	_ = <-c
+}
+
+//返回一个只读channel
+func (c *Context) Done() <-chan struct{} {
+    return nil
+}
+```
+
+
+
+
+
 ##### 遍历管道
 
 ```go
