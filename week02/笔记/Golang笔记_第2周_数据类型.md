@@ -102,7 +102,7 @@ there is third line.
 > - string中每个元素叫”字符“，字符有两种
 >   - byte：1个字节，代表ASCII码的一个字符
 >   - rune：4个字节，代表一个UTF-8字符，一个汉字可用一个rune表示
-> - string底层是byte数组，string的长促就是改byte数组的长度，UTF-8编码下一个汉字占3个byte，即一个汉字占3个长度
+> - string底层是byte数组，string的长度就是该byte数组的长度，UTF-8编码下一个汉字占3个byte，即一个汉字占3个长度
 > - string可以转换为[]byte或[]rune类型
 > - string是常量，不能修改其中的字符
 
