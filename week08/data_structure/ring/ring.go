@@ -1,0 +1,32 @@
+package main
+
+import (
+	"container/ring"
+	"fmt"
+)
+
+/*
+ring  双向循环链表
+ */
+
+func TraverseRing(ring *ring.Ring){
+	ring.Do(func(i interface{}) { //通过Do() 来遍历ring，内部实际上调用了Next() 而非 Prev()
+		fmt.Printf("%v",i)
+	})
+	fmt.Println()
+}
+
+func main(){
+	ring := ring.New(5) //必须指定长度，各元素被初始化为nil
+	ring2:=ring.Prev()
+	for i:=0;i<3;i++{
+		ring.Value=i
+		ring=ring.Next()
+	}
+	for i:=0;i<3;i++{
+		ring2.Value = i
+		ring2=ring2.Prev()
+	}
+	TraverseRing(ring)
+	TraverseRing(ring2) //ring和ring2 当前所在的指针位置不同，所有遍历出来的顺序也不同
+}

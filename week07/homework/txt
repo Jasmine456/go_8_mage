@@ -1,0 +1,62 @@
+1. 比较两个byte切片是否相同
+```go
+func bsEqual(arr, brr []byte) bool {}
+```
+2. 对一个任意长度的byte切片，在尾部追加任意元素使切片的长度变成8的整位数。这个过程称为padding。要求拿到padding后的切片能够还原出原始的切片。
+```go
+func Padding(originSlice []byte) []byte { }
+func UnPadding(paddedSlice []byte) []byte { }
+```
+3. 改变切片中的元素（元素是结构体）。
+```go
+type Student struct {
+	weight float32 //体重，kg
+	height float32 //身高，m
+	bmi    float32 //weight/height^2
+}
+
+//计算每个学生的BMI。函数返回后BMI并没有改变，如何把程序改对？
+func CalBMI1(students []Student) {
+	for _, student := range students {
+		student.bmi = student.weight / (student.height * student.height)
+	}
+}
+```
+4. 用defer优雅地打印函数的耗时
+```go
+//在每一个return的地方打印函数的耗时，很麻烦
+func foo(i int) int {
+	begin := time.Now()
+	if i < 10 {
+		fmt.Printf("function use time %d ms\n", time.Since(begin).Milliseconds())
+		return i + 4
+	} else if i < 20 {
+		fmt.Printf("function use time %d ms\n", time.Since(begin).Milliseconds())
+		return i * 4
+	} else {
+		fmt.Printf("function use time %d ms\n", time.Since(begin).Milliseconds())
+		return 0
+	}
+}
+```
+5. 接口练习
+```go
+func BikeScream() string {
+	return "叮铃铃"
+}
+
+func CarScream() string {
+	return "嘟嘟嘟"
+}
+
+func TrainScream() string {
+	return "呜呜呜"
+}
+
+//根据传入的参数不同，Run()动态地执行不同的行为。通过接口怎么实现类似的功能？
+func Run(foo func() string) {
+	fmt.Println("Are you ready?")
+	fmt.Println(foo())
+}
+```
+6. 为以上函数写单元测试。

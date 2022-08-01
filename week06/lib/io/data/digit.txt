@@ -1,0 +1,36 @@
+
+多签地址作为owner更换的测试
+
+jasmine@JMT-SW2-J01-GMD-1-3:~$ lotus msig create --required=2 --from t1jongbrlk4wiy2xj6ptjgxuuk2cybve72k54kjxi t1jongbrlk4wiy2xj6ptjgxuuk2cybve72k54kjxi t1uojxr2gycqoxrczlthcwaasvf3tvcdqpzgxafpq t1yfu64nomxqbtoa6zqzbethobe5nzbawqqklgvfa
+sent create in message:  bafy2bzacec2dkmst6ywegcfnxnl3pvq2qdwqx2ukbwpka7akzlfzzhylr4lam
+Created new multisig:  t036406 t2youtjuf2n3c3hdtq2j53mnk6hkuzvie5nnt4v7a
+
+
+jasmine@JMT-SW2-J01-GMD-1-3:~$ lotus msig  inspect t036406
+Balance: 0 FIL
+Spendable: 0 FIL
+Threshold: 2 / 3
+Signers:
+ID       Address
+t036405  t1jongbrlk4wiy2xj6ptjgxuuk2cybve72k54kjxi
+t036404  t1uojxr2gycqoxrczlthcwaasvf3tvcdqpzgxafpq
+t036403  t1yfu64nomxqbtoa6zqzbethobe5nzbawqqklgvfa
+Transactions:  0
+
+
+
+jasmine@JMT-SW2-J01-GMD-1-3:~$ lotus msig create --required=2 --from t1t7gme336kj2aywqyouicxzkyhaaiit6pumsohfi t1t7gme336kj2aywqyouicxzkyhaaiit6pumsohfi t1pvnzvgrv6ode2cop7f4tzxg6aokoz4ps5ckyi2i t1gkucyynazpyrhickvlk5rhdhvvt5cby6imte7na
+sent create in message:  bafy2bzacea5q6di3jf53njen26bsy627y73latuaifltiihqf2z2pmxl2ttuy
+Created new multisig:  t036419 t2jrmj6ixqwjcjlyq7zwsjlkxodwlvjfqhsjahg6y
+
+lotus-miner actor set-owner --really-do-it t036419 t036406
+
+
+lotus-shed miner-multisig --from t1jongbrlk4wiy2xj6ptjgxuuk2cybve72k54kjxi  --multisig t036406 --miner t034316  propose-change-owner  t036406 \
+ && lotus-shed miner-multisig --from t1uojxr2gycqoxrczlthcwaasvf3tvcdqpzgxafpq  --multisig t036406 --miner t034316  approve-change-owner  t036406 0 t1jongbrlk4wiy2xj6ptjgxuuk2cybve72k54kjxi
+
+
+
+
+
+需求 使用go将lotus state 输出到文件，对文件进行处理
