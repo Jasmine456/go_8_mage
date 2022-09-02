@@ -1,0 +1,17 @@
+[app]
+name="vblog"
+
+[app.http]
+host="localhost"
+port="7080"
+
+[mysql]
+host="10.20.2.117"
+port="33060"
+database="vblog"
+username="root"
+password="123456"
+
+[auth]
+username="jasmine"
+password="123456"
