@@ -1,0 +1,90 @@
+<template>
+  <div class="about">
+<!--    &lt;!&ndash;    <h1>This is an about page</h1>&ndash;&gt;-->
+<!--    &lt;!&ndash;    <p>This is edit content</p>&ndash;&gt;-->
+<!--    <h2 v-bind:id="person.name" :style="{fontSize: fontSize + 'px' }">{{ person.name.split('').reverse().join('') }}</h2>-->
+<!--    <div>-->
+<!--      <p>技能：{{ person.skills }}</p>-->
+<!--      <ul v-for="(item,index) in person.skills" :key="index">-->
+<!--        <li v-if="item != 'shell'">{{ item }}</li>-->
+<!--      </ul>-->
+<!--&lt;!&ndash;      <input v-model="fontSize" type="text" />&ndash;&gt;-->
+<!--      <input v-focus v-model="name" type="text"/>-->
+<!--      <input v-model="person.name" type="text"/>-->
+<!--      <input v-model="skill" @keyup.enter="addSkile(skill)" type="text"/>-->
+<!--      <button v-show="isShow" @:click="clickButtom" >Button</button>-->
+<!--      <input v-focus v-model="score" type="text"/>-->
+<!--      <div>-->
+<!--        <span v-if="score >=90">优</span>-->
+<!--        <span v-else-if="score >=80">良</span>-->
+<!--        <span v-else-if="score >=60">及格</span>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--<TestHello></TestHello>-->
+<!--&lt;!&ndash;标准的html标签的方式使用&ndash;&gt;-->
+<!--  <test-hello></test-hello>-->
+
+    <ul v-for="(item,index) in Object.keys(cm)" :key="index">
+      <li>
+        <button @click="currentComp = item"> {{ item }}</button>
+      </li>
+    </ul>
+    <Transition name="slide-fade">
+    <component :is="cm[currentComp]"></component>
+    </Transition>
+    <!--  <DemoArchive></DemoArchive>-->
+    <!--    |-->
+    <!--    <DemoHome>-->
+    <!--    </DemoHome>-->
+    <!--    |-->
+    <!--    <DemoPost></DemoPost>-->
+  </div>
+</template>
+
+<script setup>
+// import TestHello from "./TestHello";
+// export default {
+//   components: {TestHello}
+// }
+import DemoArchive from '@/components/DemoArchive.vue'
+import DemoHome from '@/components/DemoHome.vue'
+import DemoPost from '@/components/DemoPost.vue'
+import { ref } from "vue";
+//用一个map保存当前的组件列表
+let cm = {
+  "DemoArchive":DemoArchive,
+  "DemoHome":  DemoHome,
+  "DemoPost":DemoPost,
+};
+
+let currentComp = ref('DemoArchive')
+
+</script>
+
+<style>
+@media (min-width: 1024px) {
+  .about {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/*
+  进入和离开动画可以使用不同
+  持续时间和速度曲线。
+*/
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
+}
+</style>

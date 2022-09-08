@@ -5,6 +5,9 @@ import (
 	"time"
 )
 
+var x string=nil
+
+
 func main(){
 	ch := make(chan struct{},1)
 	ch <- struct{}{} // 有1个缓冲可以用，无需阻塞，可以立即执行
