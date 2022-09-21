@@ -1,6 +1,12 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
 import HelloWorld from "./components/HelloWorld.vue";
+
+// import { ref,provide } from  "vue";
+// const count=ref(20)
+// //注入的是一个响应式的变量
+// provide("count",count)
+
 </script>
 
 <template>
@@ -17,12 +23,15 @@ import HelloWorld from "./components/HelloWorld.vue";
       <HelloWorld msg="You did it!" />
 
       <nav>
+<!--        路由导航-->
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/test">Test</RouterLink>
+        <RouterLink to="/blogs">博客列表</RouterLink>
       </nav>
     </div>
   </header>
-
+<!--根据当前的路由path， / /about,动态显示对于path的路由页面-->
   <RouterView />
 </template>
 
