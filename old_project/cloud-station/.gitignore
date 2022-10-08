@@ -1,0 +1,8 @@
+etc/test.env
+
+cloud-station.exe
+cloud-station
+
+*.exe
+*.exe~
+

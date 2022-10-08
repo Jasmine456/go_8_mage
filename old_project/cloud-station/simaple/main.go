@@ -49,8 +49,6 @@ func upload(file_path string) error {
 	fmt.Println("请在1天之内下载。")
 	return nil
 
-
-
 }
 
 //参数合法性检查
