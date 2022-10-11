@@ -25,8 +25,7 @@ func NewCreateBlog(req *CreateBlogRequest) *Blog {
 type Blog struct {
 	//文章ID
 	Id int `json:"id"`
-	//文章摘要信息.通过提取content内容获取
-	Sumary string `json:"summary" gorm:"-"`
+
 	// 创建时间
 	CreateAt int64 `json:"create_at"`
 	//更新时间
@@ -79,6 +78,8 @@ type CreateBlogRequest struct {
 	Content string `json:"content" validate:"required"`
 	//文章作者
 	Author string `json:"author"`
+	//文章摘要信息.通过提取content内容获取
+	Summary string `json:"summary" validate:"required"`
 }
 
 func (req *CreateBlogRequest) Validate() error {
@@ -107,19 +108,16 @@ type UpdateBlogRequest struct {
 	*CreateBlogRequest
 }
 
+func NewDeleteBlogRequest(id int) *DeleteBlogRequest {
+	return &DeleteBlogRequest{Id: id}
+}
+
 type DeleteBlogRequest struct {
 	Id int
 }
 
-func NewDeleteBlogRequest(id int) *DeleteBlogRequest {
-	return &DeleteBlogRequest{Id: id}
-}
-func NewQueryBlogRequest() *QueryBlogRequest {
-	return &QueryBlogRequest{
-		PageSize:   20,
-		PageNumber: 1,
-	}
-}
+
+
 
 //使用http标准库的原始方法来获取
 // http query string: ?keywords=b&page_size=20&page_number=1
@@ -139,6 +137,13 @@ func NewQueryBlogRequestFromHTTP(r *http.Request) *QueryBlogRequest {
 		req.PageNumber, _ = strconv.Atoi(pnStr)
 	}
 	return req
+}
+
+func NewQueryBlogRequest() *QueryBlogRequest {
+	return &QueryBlogRequest{
+		PageSize:   20,
+		PageNumber: 1,
+	}
 }
 
 type QueryBlogRequest struct {

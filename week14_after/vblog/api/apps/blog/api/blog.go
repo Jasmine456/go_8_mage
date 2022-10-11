@@ -48,6 +48,11 @@ func (h *HTTPAPI) CreateBlog(c *gin.Context) {
 		return
 	}
 
+	//获取用户
+	username,_,_:=c.Request.BasicAuth()
+	req.Author=username
+
+
 	ins,err:=h.service.CreateBlog(c.Request.Context(),req)
 	if err!=nil{
 		c.JSON(http.StatusInternalServerError,gin.H{
@@ -66,6 +71,7 @@ func (h *HTTPAPI) QueryBlog(c *gin.Context) {
 	//req.Keywords=c.Query("keywords")
 	//req.PageSize= c.Query("page_size")
 	//req.PageNumber= c.Query("page_number")
+	//time.Sleep(3*time.Second)
 	req:=blog.NewQueryBlogRequestFromHTTP(c.Request)
 	set,err:=h.service.QueryBlog(c.Request.Context(),req)
 	if err!=nil{
@@ -119,6 +125,7 @@ func (h *HTTPAPI) DescribeBlog(c *gin.Context) {
 }
 
 func (h *HTTPAPI) DeleteBlog(c *gin.Context) {
+	//time.Sleep(4*time.Second)
 	//"/:id" /abc id=abc
 	blogIdStr := c.Param("id")
 	bid,err:=strconv.Atoi(blogIdStr)
