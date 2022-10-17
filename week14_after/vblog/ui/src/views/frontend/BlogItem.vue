@@ -12,18 +12,28 @@
       {{ summary }}
     </div>
     <div class="more">
-      <a-button size="mini" type="dashed">阅读全文 »</a-button>
+      <a-button size="mini" type="dashed" @click="JumpToDetail">阅读全文 »</a-button>
     </div>
   </div>
 </template>
 
 <script setup>
-defineProps({
+import {useRouter} from "vue-router";
+
+
+const pros =defineProps({
+  id:Number,
   title: String,
   publishAt: Number,
   author: String,
   summary: String,
 });
+
+const router = useRouter()
+const JumpToDetail =()=>{
+  router.push({name:"BlogDetail",params:{id: pros.id}})
+}
+
 </script>
 
 <style lang="less" scoped>

@@ -121,7 +121,7 @@ type DeleteBlogRequest struct {
 
 //使用http标准库的原始方法来获取
 // http query string: ?keywords=b&page_size=20&page_number=1
-func NewQueryBlogRequestFromHTTP(r *http.Request) *QueryBlogRequest {
+func NewQueryBlogRequestFromHTTP(r *http.Request) (*QueryBlogRequest,error) {
 	qs := r.URL.Query()
 
 	req := NewQueryBlogRequest()
@@ -136,7 +136,18 @@ func NewQueryBlogRequestFromHTTP(r *http.Request) *QueryBlogRequest {
 	if pnStr != "" {
 		req.PageNumber, _ = strconv.Atoi(pnStr)
 	}
-	return req
+
+	//获取状态过滤参数
+	status:=qs.Get("status")
+	if status!=""{
+		status,err:=ParseTagTypeFromString(status)
+		if err != nil {
+			return nil,err
+		}
+		req.Status = &status
+	}
+
+	return req,nil
 }
 
 func NewQueryBlogRequest() *QueryBlogRequest {
@@ -150,6 +161,10 @@ type QueryBlogRequest struct {
 	PageSize   int
 	PageNumber int
 	Keywords   string
+//	补充状态过滤参数，用于web 前台过滤已经发布的文章
+// 比如过滤状态为发布的文章
+	Status *Status
+	BlogIds []int
 }
 
 func (req *QueryBlogRequest) Offset() int {

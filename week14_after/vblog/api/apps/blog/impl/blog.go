@@ -104,6 +104,11 @@ func (i *Impl) QueryBlog(ctx context.Context, req *blog.QueryBlogRequest) (*blog
 			)
 	}
 
+	//状态过滤
+	if req.Status !=nil{
+		query = query.Where("status = ?",*req.Status)
+	}
+
 	//如何查询总条数：COUNT(*)
 	if err := query.Count(&set.Total).Error; err != nil {
 		return nil, err

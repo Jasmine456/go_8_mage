@@ -3,9 +3,11 @@ package main
 import (
 	"fmt"
 	"go_8_mage/week14_after/micro/rpc/rpc_interface/service"
+	"image/draw"
 	"log"
 	"net"
 	"net/rpc"
+	"net/rpc/jsonrpc"
 )
 
 type HelloService struct {
@@ -51,7 +53,10 @@ func main() {
 		// 前面都是tcp的知识, 到这个RPC就接管了
 		// 因此 你可以认为 rpc 帮我们封装消息到函数调用的这个逻辑,
 		// 提升了工作效率, 逻辑比较简洁，可以看看他代码
-		go rpc.ServeConn(conn)
+
+		//rpc框架为提供了基于Json的 服务端的编解码器：jsonrpc.ServerCodec
+		svc:=jsonrpc.NewServerCodec(conn)
+		go rpc.ServerCodec(svc)
 	}
 
 }

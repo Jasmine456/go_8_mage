@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package hello;
+option go_package="go_8_mage/week14_after/micro/rpc/protobuf/hello/pb";
+
+message String {
+    string value = 1;
+}

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ba0bb437-cce5-4db3-88e7-4612642565a9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../../go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../old_project/cloud-station/cli/root.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../old_project/cloud-station/cli/root.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../micro/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../micro/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../micro/rpc/json_tcp/server/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../../micro/rpc/json_tcp/server/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../micro/rpc/protobuf/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../micro/rpc/protobuf/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../micro/rpc/protobuf/hello/pb/hello.proto" beforeDir="false" afterPath="$PROJECT_DIR$/../../../micro/rpc/protobuf/hello/pb/hello.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../micro/rpc/rpc_interface/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../micro/rpc/rpc_interface/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../micro/rpc/rpc_interface/client/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../../micro/rpc/rpc_interface/client/client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../micro/rpc/rpc_interface/server/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../../micro/rpc/rpc_interface/server/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../micro/rpc/rpc_interface/service/hello.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../../micro/rpc/rpc_interface/service/hello.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../micro/rpc/rpc_simple/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../micro/rpc/rpc_simple/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../micro/rpc/rpc_simple/client/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../../micro/rpc/rpc_simple/client/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../micro/rpc/rpc_simple/server/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../../micro/rpc/rpc_simple/server/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/api/blog.go" beforeDir="false" afterPath="$PROJECT_DIR$/blog/api/blog.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/impl/blog.go" beforeDir="false" afterPath="$PROJECT_DIR$/blog/impl/blog.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/model.go" beforeDir="false" afterPath="$PROJECT_DIR$/blog/model.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ui/src/api/blog.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/src/api/blog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ui/src/api/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/src/api/client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ui/src/api/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/src/api/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ui/src/layout/BackendLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/src/layout/BackendLayout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ui/src/layout/FrontendLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/src/layout/FrontendLayout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ui/src/router/permission.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/src/router/permission.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ui/src/views/backend/BlogCreate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/src/views/backend/BlogCreate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ui/src/views/backend/BlogList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/src/views/backend/BlogList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ui/src/views/backend/TagList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/src/views/backend/TagList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ui/src/views/errors/NotFound.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/src/views/errors/NotFound.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ui/src/views/errors/PermissionDeny.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/src/views/errors/PermissionDeny.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ui/src/views/frontend/BlogDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/src/views/frontend/BlogDetail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ui/src/views/frontend/BlogItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/src/views/frontend/BlogItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ui/src/views/frontend/BlogView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/src/views/frontend/BlogView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ui/src/views/login/LoginPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/src/views/login/LoginPage.vue" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GOROOT" url="file://$PROJECT_DIR$/../../../../../../../Program Files/Go/bin/go1.18.1" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectId" id="2Fys0QvZdgT4rsH34MkVWbQCdM0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

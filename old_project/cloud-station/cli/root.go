@@ -23,8 +23,7 @@ var RootCmd = &cobra.Command{
 
 func init(){
 	f:=RootCmd.PersistentFlags()
-
-	f.BoolVarP(&version,"version","v",false,"")
+	f.BoolVarP(&version,"version","v",false,"cloud station 版本信息")
 }
 
 

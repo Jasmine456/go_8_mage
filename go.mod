@@ -22,8 +22,10 @@ require (
 	go.mongodb.org/mongo-driver v1.10.0
 	golang.org/x/sys v0.0.0-20220622161953-175b2fd9d664
 	gonum.org/v1/gonum v0.11.0
+	google.golang.org/protobuf v1.28.0
 	gorm.io/driver/mysql v1.3.5
 	gorm.io/gorm v1.23.8
+	honnef.co/go/tools v0.1.3
 )
 
 require (
@@ -68,9 +70,9 @@ require (
 	golang.org/x/net v0.0.0-20220622184535-263ec571b305 // indirect
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
 	golang.org/x/text v0.3.7 // indirect
+	golang.org/x/tools v0.1.9 // indirect
 	google.golang.org/genproto v0.0.0-20200108215221-bd8f9a0ef82f // indirect
 	google.golang.org/grpc v1.27.1 // indirect
-	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )

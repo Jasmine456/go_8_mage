@@ -72,7 +72,16 @@ func (h *HTTPAPI) QueryBlog(c *gin.Context) {
 	//req.PageSize= c.Query("page_size")
 	//req.PageNumber= c.Query("page_number")
 	//time.Sleep(3*time.Second)
-	req:=blog.NewQueryBlogRequestFromHTTP(c.Request)
+	//req.Status = c.Query("status")
+	req,err:=blog.NewQueryBlogRequestFromHTTP(c.Request)
+	if err!=nil{
+		c.JSON(http.StatusInternalServerError,gin.H{
+			"code":http.StatusInternalServerError,
+			"message":err.Error(),
+		})
+		return
+	}
+
 	set,err:=h.service.QueryBlog(c.Request.Context(),req)
 	if err!=nil{
 		c.JSON(http.StatusInternalServerError,gin.H{
