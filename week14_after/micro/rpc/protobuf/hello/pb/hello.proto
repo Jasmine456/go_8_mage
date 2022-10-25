@@ -3,6 +3,11 @@ syntax = "proto3";
 package hello;
 option go_package="go_8_mage/week14_after/micro/rpc/protobuf/hello/pb";
 
-message String {
-    string value = 1;
+message Blog {
+    string title = 1;
+    string summary=2;
+    string content=3;
+    string author=4;
+    bool is_published=5;
 }
+

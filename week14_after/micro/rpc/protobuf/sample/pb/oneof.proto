@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package hello;
+
+option go_package = "go_8_mage/week14_after/micro/rpc/protobuf/sample/pb";
+
+
+// 定义一个Event，有一个Data，不同的Event，data里面的数据结构不一样
+//已知有两种事件，ResourceChange：资源状态编程（创建ECS，删除ECS），ResourceAlert:(ECS 告警)
+
+message ResourceChange{
+    string resource_id = 1;
+//    create,delete
+    string action = 2;
+
+}
+
+message ResourceAlert{
+    string resource_id = 1;
+    //   info warn danger
+    string level = 2;
+
+}
+
+enum TYPE {
+    RESOURCE_CHANGE = 0;
+    RESOURCE_ALERT = 1;
+}
+
+message Event {
+    TYPE type =1;
+    oneof data {
+        ResourceChange resource_change = 2;
+        ResourceAlert resource_alert = 3;
+    }
+}
+
+

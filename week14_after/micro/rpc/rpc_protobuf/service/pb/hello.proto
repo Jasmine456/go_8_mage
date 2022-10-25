@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package hello;
+option go_package="go_8_mage/week14_after/micro/rpc/rpc_protobuf/service";
+
+message Request {
+    string value = 1;
+}
+
+message Response {
+    string value = 1;
+}

@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package hello;
+
+option go_package = "go_8_mage/week14_after/micro/rpc/protobuf/sample/pb";
+
+message Blog {
+    string title = 1;
+    string author = 2;
+//    tags:{"color": "red","group":"test"} map[string]string
+    map<string,string> tags=3;
+}
+
+//博客列表
+message BlogSet {
+    //    optional 该值可选，可以为nil，因此必须是指针
+    optional int64 total = 1;
+    //    repeated 表示定义数组
+    //    嵌套message
+    repeated Blog items = 2;
+}
+

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package hello;
+
+option go_package = "go_8_mage/week14_after/micro/rpc/protobuf/sample/pb";
+
+// 定义文章只有下面几种状态
+enum STATUS {
+    //    草稿状态
+    DRAFT = 0;
+    //    已发布
+    PUBLISHED = 1;
+
+
+}
+

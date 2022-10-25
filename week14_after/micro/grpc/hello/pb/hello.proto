@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package hello;
+option go_package="go_8_mage/week14_after/micro/rpc/grpc/hello/pb";
+
+// The HelloService service definition.
+//alice --- hello,alice
+service HelloService {
+    rpc Greet (Request) returns (Response);
+}
+
+message Request {
+    string value = 1;
+}
+
+message Response {
+    string value = 1;
+}

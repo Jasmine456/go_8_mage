@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package hello;
+
+import "pb/array.proto";
+//import "rpc/protobuf/sample/pb/array.proto";
+
+
+// 和我们-I指定的路径有关系
+// -I=.  pb/array.proto
+//引入后如何使用
+
+option go_package = "go_8_mage/week14_after/micro/rpc/protobuf/sample/other_pb";
+
+message BlogSetPage {
+//    如果是同一个包，是可以缩写的
+//    google.protobuf.Any google.protobuf Any
+//    google.test.Any2 在这个包里面引入any 共同的前缀：google，共同的前缀部分是可以省略的 protobuf.Any
+    hello.BlogSet set =1;
+}
+
+

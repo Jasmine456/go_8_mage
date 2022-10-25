@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package hello;
+option go_package="go_8_mage/week14_after/micro/rpc/grpc/stream/pb";
+
+// The HelloService service definition.
+//alice --- hello,alice
+service HelloService {
+//    双向数据流通道
+//    客户端发送流式请求
+//    服务端响应 流式返回
+    rpc Channel(stream Request) returns (stream Response);
+}
+
+message Request {
+    string value = 1;
+}
+
+message Response {
+    string value = 1;
+}

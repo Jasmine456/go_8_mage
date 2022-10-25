@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package hello;
+
+option go_package = "go_8_mage/week14_after/micro/rpc/protobuf/sample/pb";
+
+// 这里是应用其他的proto文件, 后面会讲 ipmort用法
+// 首先是要找到文件，是在安装了protobuf后的include里面: /usr/local/include/google/protobuf/any.proto
+//怎么让protoc也找到该文件：-I=/usr/local/include
+//在该目录下：/usr/local/include，寻找 google/protobuf/any.proto --> /usr/local/include/google/protobuf/any.proto
+import "google/protobuf/any.proto";
+
+
+//enum DEVICE_TYPE {
+//    //    A1,A1型号的设备，上报温度
+//    A1 = 1;
+//    //    A2,上报风速
+//    A2 = 2;
+//}
+
+// 比如IOT设备上报的报文，不同的设备 上报的数据结构是不一样的
+message Device {
+    //    "a1"，"a2","xxxxx"
+    string device_type = 1;
+    google.protobuf.Any data = 2;
+}

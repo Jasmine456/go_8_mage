@@ -1,0 +1,9 @@
+pkg: github.com/go_8_mage/week14_after/devcloud/maudit
+name: maudit
+description: 微服务操作审计模块
+enable_keyauth: false
+enable_mysql: false
+enable_mongodb: true
+gen_example: true
+http_framework: go-restful
+enable_cache: false

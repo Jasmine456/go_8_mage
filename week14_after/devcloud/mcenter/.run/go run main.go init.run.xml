@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="go run main.go init" type="GoApplicationRunConfiguration" factoryName="Go Application" singleton="false">
+    <module name="mcenter" />
+    <working_directory value="$PROJECT_DIR$" />
+    <useCustomBuildTags value="true" />
+    <parameters value="init" />
+    <sudo value="true" />
+    <kind value="PACKAGE" />
+    <filePath value="$PROJECT_DIR$/main.go" />
+    <package value="github.com/go_8_mage/week14_after/devcloud/mcenter" />
+    <directory value="$PROJECT_DIR$" />
+    <method v="2" />
+  </configuration>
+</component>
