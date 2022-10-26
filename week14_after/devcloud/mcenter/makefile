@@ -1,7 +1,7 @@
 PROJECT_NAME := "mcenter"
 MAIN_FILE_PAHT := "main.go"
-PKG := "github.com/go_8_mage/week14_after/devcloud/mcenter"
-IMAGE_PREFIX := "github.com/go_8_mage/week14_after/devcloud/mcenter"
+PKG := "github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter"
+IMAGE_PREFIX := "github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter"
 
 MOD_DIR := $(shell go env GOPATH)/pkg/mod
 PKG_LIST := $(shell go list ${PKG}/... | grep -v /vendor/ | grep -v redis)

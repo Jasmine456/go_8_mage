@@ -8,7 +8,7 @@ package token
 
 import (
 	request "github.com/infraboard/mcube/http/request"
-	user "github.com/go_8_mage/week14_after/devcloud/mcenter/apps/user"
+	user "github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/user"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"

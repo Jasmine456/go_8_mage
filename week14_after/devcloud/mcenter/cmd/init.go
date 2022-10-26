@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"github.com/infraboard/mcube/app"
 	"github.com/spf13/cobra"
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/apps/domain"
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/apps/user"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/domain"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/user"
 )
 
 var (

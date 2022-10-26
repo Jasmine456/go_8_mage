@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/cmd"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/cmd"
 )
 
 func main() {

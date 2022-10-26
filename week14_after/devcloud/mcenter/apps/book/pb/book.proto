@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package demo.book;
-option go_package = "github.com/go_8_mage/week14_after/devcloud/mcenter/apps/book";
+option go_package = "github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/book";
 
 import "github.com/infraboard/mcube/pb/page/page.proto";
 import "github.com/infraboard/mcube/pb/request/request.proto";

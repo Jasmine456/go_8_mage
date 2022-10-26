@@ -6,9 +6,9 @@ import (
 	"github.com/infraboard/mcube/exception"
 	"github.com/infraboard/mcube/logger"
 	"github.com/infraboard/mcube/logger/zap"
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/apps/token"
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/apps/token/provider"
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/apps/user"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token/provider"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/user"
 )
 
 

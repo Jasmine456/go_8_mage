@@ -5,7 +5,7 @@ import (
 	"github.com/infraboard/mcube/app"
 	"github.com/infraboard/mcube/logger"
 	"github.com/infraboard/mcube/logger/zap"
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/apps/user"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/user"
 )
 
 var (

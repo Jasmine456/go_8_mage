@@ -3,7 +3,7 @@ package provider
 import (
 	"context"
 	"fmt"
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/apps/token"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token"
 )
 
 var (

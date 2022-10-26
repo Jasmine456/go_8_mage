@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package go8.devcloud.mcenter.token;
-option go_package = "github.com/go_8_mage/week14_after/devcloud/mcenter/apps/token";
+option go_package = "github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token";
 
 import "apps/user/pb/user.proto";
 

@@ -1,4 +1,4 @@
-module github.com/go_8_mage/week14_after/devcloud/mcenter
+module github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter
 
 go 1.18
 

@@ -11,8 +11,8 @@ import (
 	"github.com/infraboard/mcube/logger/zap"
 	"google.golang.org/grpc"
 
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/apps/user"
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/conf"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/user"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/conf"
 )
 
 // 内部服务service接口的实现类

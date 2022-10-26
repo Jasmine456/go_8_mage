@@ -3,7 +3,7 @@ package api
 import (
 	"github.com/emicklei/go-restful/v3"
 	"github.com/infraboard/mcube/http/response"
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/apps/token"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token"
 )
 
 func (h *handler) IssueToken(r *restful.Request, w *restful.Response) {

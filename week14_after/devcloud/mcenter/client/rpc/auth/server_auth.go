@@ -2,8 +2,8 @@ package auth
 
 import (
 	"github.com/emicklei/go-restful/v3"
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/apps/token"
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/client/rpc"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/client/rpc"
 	"github.com/infraboard/mcube/http/label"
 	"github.com/infraboard/mcube/http/response"
 	"github.com/infraboard/mcube/logger"

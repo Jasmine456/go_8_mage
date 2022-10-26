@@ -8,8 +8,8 @@ import (
 	"github.com/infraboard/mcube/logger/zap"
 	"google.golang.org/grpc"
 
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/apps/book"
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/conf"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/book"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/conf"
 )
 
 var (

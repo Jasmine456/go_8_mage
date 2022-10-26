@@ -5,14 +5,14 @@ import (
 	"github.com/infraboard/mcube/app"
 	"github.com/infraboard/mcube/logger"
 	"github.com/infraboard/mcube/logger/zap"
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/apps/token/provider"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token/provider"
 	"google.golang.org/grpc"
 
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/conf"
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/apps/token"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/conf"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token"
 
 	// 加载所有的provider
-	_ "github.com/go_8_mage/week14_after/devcloud/mcenter/apps/token/provider/all"
+	_ "github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token/provider/all"
 )
 
 var (

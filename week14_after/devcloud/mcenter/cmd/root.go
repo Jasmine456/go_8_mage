@@ -6,7 +6,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/version"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/version"
 )
 
 var (

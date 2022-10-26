@@ -14,11 +14,11 @@ import (
 	"github.com/infraboard/mcube/logger"
 	"github.com/infraboard/mcube/logger/zap"
 
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/conf"
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/protocol"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/conf"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/protocol"
 
 	// 注册所有服务
-	_ "github.com/go_8_mage/week14_after/devcloud/mcenter/apps/all"
+	_ "github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/all"
 )
 
 // startCmd represents the start command

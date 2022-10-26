@@ -3,7 +3,7 @@ package protocol
 import (
 	"context"
 	"fmt"
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/protocol/auth"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/protocol/auth"
 	"net/http"
 	"time"
 
@@ -14,8 +14,8 @@ import (
 
 	"github.com/infraboard/mcube/app"
 
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/conf"
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/swagger"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/conf"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/swagger"
 )
 
 // NewHTTPService 构建函数

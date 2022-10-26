@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package go8.devcloud.mcenter;
 
-option go_package = "github.com/go_8_mage/week14_after/devcloud/mcenter/apps/user";
+option go_package = "github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/user";
 
 message User {
     // 用户Id

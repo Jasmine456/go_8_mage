@@ -1,4 +1,4 @@
-pkg: github.com/go_8_mage/week14_after/devcloud/mcenter
+pkg: github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter
 name: mcenter
 description: 用户中心
 enable_keyauth: false

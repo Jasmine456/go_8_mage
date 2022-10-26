@@ -7,7 +7,7 @@ import (
 	"github.com/infraboard/mcube/exception"
 	"github.com/infraboard/mcube/http/request"
 	"github.com/rs/xid"
-	"github.com/go_8_mage/week14_after/devcloud/mcenter/apps/domain"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/domain"
 	"golang.org/x/crypto/bcrypt"
 	"net/http"
 	"strings"
