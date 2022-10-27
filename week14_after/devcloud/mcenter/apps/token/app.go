@@ -109,4 +109,3 @@ func NewValidateTokenRequest(ak string) *ValidateTokenRequest {
 		AccessToken: ak,
 	}
 }
-

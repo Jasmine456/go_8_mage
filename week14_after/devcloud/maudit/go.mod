@@ -4,6 +4,7 @@ go 1.18
 
 require (
 	github.com/BurntSushi/toml v1.2.1
+	github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter v0.0.0-20221026060511-2591916bb88e
 	github.com/caarlos0/env/v6 v6.10.1
 	github.com/emicklei/go-restful-openapi v1.4.1
 	github.com/emicklei/go-restful-openapi/v2 v2.9.1
@@ -16,6 +17,7 @@ require (
 	github.com/spf13/cobra v1.6.1
 	go.mongodb.org/mongo-driver v1.10.3
 	google.golang.org/grpc v1.50.1
+	google.golang.org/protobuf v1.27.1
 )
 
 require (
@@ -56,6 +58,5 @@ require (
 	golang.org/x/sys v0.0.0-20220204135822-1c1b9b1eba6a // indirect
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/genproto v0.0.0-20211208223120-3a66f561d7aa // indirect
-	google.golang.org/protobuf v1.27.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )

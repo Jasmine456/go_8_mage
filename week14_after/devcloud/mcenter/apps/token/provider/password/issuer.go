@@ -2,15 +2,14 @@ package password
 
 import (
 	"context"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token/provider"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/user"
 	"github.com/infraboard/mcube/app"
 	"github.com/infraboard/mcube/exception"
 	"github.com/infraboard/mcube/logger"
 	"github.com/infraboard/mcube/logger/zap"
-	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token"
-	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token/provider"
-	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/user"
 )
-
 
 var (
 	AUTH_FAILED = exception.NewUnauthorized("用户名获取密码不正确")

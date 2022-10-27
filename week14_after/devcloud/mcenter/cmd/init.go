@@ -3,10 +3,10 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"github.com/infraboard/mcube/app"
-	"github.com/spf13/cobra"
 	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/domain"
 	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/user"
+	"github.com/infraboard/mcube/app"
+	"github.com/spf13/cobra"
 )
 
 var (
@@ -25,25 +25,25 @@ var initCmd = &cobra.Command{
 		}
 
 		//初始化全局日志配置
-		if err:=loadGlobalLogger();err!=nil{
+		if err := loadGlobalLogger(); err != nil {
 			return err
 		}
 
 		//初始化全局app
-		if err:=app.InitAllApp();err!=nil{
+		if err := app.InitAllApp(); err != nil {
 			return err
 		}
 
 		//创建一个主账号 admin
-		us:=app.GetInternalApp(user.AppName).(user.Service)
+		us := app.GetInternalApp(user.AppName).(user.Service)
 		fmt.Println(us)
-		createUserReq:=user.NewCreateUserRequest()
-		createUserReq.CreateBy=user.CREATE_BY_ADMIN
-		createUserReq.Domain=domain.DEFAULT_DOMAIN
-		createUserReq.Username="admin"
-		createUserReq.Password="123456"
-		createUserReq.Type=user.TYPE_SUPPER
-		u,err:=us.CreateUser(context.Background(),createUserReq)
+		createUserReq := user.NewCreateUserRequest()
+		createUserReq.CreateBy = user.CREATE_BY_ADMIN
+		createUserReq.Domain = domain.DEFAULT_DOMAIN
+		createUserReq.Username = "admin"
+		createUserReq.Password = "123456"
+		createUserReq.Type = user.TYPE_SUPPER
+		u, err := us.CreateUser(context.Background(), createUserReq)
 
 		if err != nil {
 			return err

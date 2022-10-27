@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package go8.devcloud.mcenter.role;
+option go_package = "github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/role";
+
+// EffectType 授权效力包括两种：允许（Allow）和拒绝（Deny）
+enum EffectType {
+    // 允许访问
+    ALLOW = 0;
+    // 拒绝访问
+    DENY = 1;
+}
+
+// Permission 权限
+message Permission {
+    // id
+    // @gotags: bson:"_id" json:"id"
+    string id = 1;
+    // 创建时间
+    // @gotags: bson:"create_at" json:"create_at"
+    int64 create_at = 2;
+    // 角色Id
+    // @gotags: bson:"role_id" json:"role_id"
+    string role_id = 3;
+    // 权限具体定义, 那个服务 的那个接口
+    // @gotags: bson:"spec" json:"spec"
+    Spec spec = 4;
+    // 范围, 角色范围限制, 由策略引擎动态补充
+    // @gotags: bson:"-" json:"scope"
+    string scope = 5;
+}
+
+// 用户对那个服务的那个接口 由访问权限
+// 用户的功能的直接绑定? 后面服务更新，添加一个接口
+// 如何才能解构 功能与权限的直接绑定?  Lable, 采用标签进行解构
+// 注册上来一个功能条目: 服务 接口   resource:a, action:list  , role: permisson:  a:list 由收起(a:*)
+message Spec {
+    // 创建人
+    // @gotags: bson:"create_by" json:"create_by"
+    string create_by = 1;
+    // 权限描述
+    // @gotags: bson:"desc" json:"desc"
+    string desc = 2;
+    // 效力
+    // @gotags: bson:"effect" json:"effect"
+    EffectType effect = 4;
+    // 服务ID
+    // @gotags: bson:"service_id" json:"service_id"
+    string service_id = 5;
+    // 资源列表
+    // @gotags: bson:"resource_name" json:"resource_name"
+    string resource_name = 6;
+    // 维度, action
+    // @gotags: bson:"label_key" json:"label_key"
+    string label_key = 7;
+    // 适配所有值
+    // @gotags: bson:"match_all" json:"match_all"
+    bool match_all = 8;
+    // 标识值, [list, create, update, get]
+    // @gotags: bson:"label_values" json:"label_values"
+    repeated string label_values = 9;
+}
+
+// PermissionSet 用户列表
+message PermissionSet {
+    // @gotags: bson:"total" json:"total"
+    int64 total = 1;
+    // @gotags: bson:"items" json:"items"
+    repeated Permission items = 2;
+}

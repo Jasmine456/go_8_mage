@@ -1,9 +1,9 @@
 package api
 
 import (
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token"
 	"github.com/emicklei/go-restful/v3"
 	"github.com/infraboard/mcube/http/response"
-	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token"
 )
 
 func (h *handler) IssueToken(r *restful.Request, w *restful.Response) {
@@ -22,8 +22,6 @@ func (h *handler) IssueToken(r *restful.Request, w *restful.Response) {
 
 	response.Success(w.ResponseWriter, tk)
 }
-
-
 
 // Refresh Token必须传递, 判断撤销者身份
 func (u *handler) RevolkToken(r *restful.Request, w *restful.Response) {

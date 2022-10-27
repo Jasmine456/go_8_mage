@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package go8.devcloud.mcenter.endpoint;
+option go_package = "github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/tools";
+
+import "github.com/infraboard/mcube/pb/page/page.proto";
+import "apps/endpoint/pb/endpoint.proto";
+
+// RPC endpoint管理
+service RPC {
+    // 服务接口注册
+    rpc RegistryEndpoint(RegistryRequest) returns(RegistryResponse);
+    rpc DescribeEndpoint(DescribeEndpointRequest) returns(Endpoint);
+    rpc QueryEndpoints(QueryEndpointRequest) returns(EndpointSet);
+}
+
+// RegistryRequest 服务注册请求, 验证服务的合法性, 需要客户端凭证
+message RegistryRequest {
+    // @gotags: json:"client_id" validate:"required"
+    string client_id = 1;
+    // @gotags: json:"client_secret" validate:"required"
+    string client_secret = 2;
+    // @gotags: json:"version" validate:"required,lte=32"
+    string version = 3;
+    // @gotags: json:"entries"
+    repeated Entry entries = 4;
+}
+
+// RegistryReponse todo
+message RegistryResponse {
+    // @gotags: json:"message"
+    string message = 1;
+}
+
+// DescribeEndpointRequest todo
+message DescribeEndpointRequest {
+    // @gotags: json:"id"
+    string id = 1;
+}
+
+// QueryEndpointRequest 查询应用列表
+message QueryEndpointRequest {
+    // @gotags: json:"page"
+    infraboard.mcube.page.PageRequest page = 1;
+    // 几个服务总共由哪些Endpoinit
+    // 查询完 Endpoint, 根据Label进行匹配
+    // @gotags: json:"service_ids"
+    repeated string service_ids = 2;
+    // @gotags: json:"path"
+    string path = 3;
+    // @gotags: json:"method"
+    string method = 4;
+    // @gotags: json:"function_name"
+    string function_name = 5;
+    // 根据资源名称和标签能匹配到对应的Endpoint
+    // @gotags: json:"resources"
+    repeated string resources = 6;
+    // @gotags: json:"labels"
+    map<string, string> labels = 7;
+    // @gotags: json:"permission_enable"
+    optional bool permission_enable = 8;
+}

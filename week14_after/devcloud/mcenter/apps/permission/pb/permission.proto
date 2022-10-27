@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package go8.devcloud.mcenter.permission;
+option go_package = "github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/permission";
+
+import "github.com/infraboard/mcube/pb/page/page.proto";
+import "apps/role/pb/role.proto";
+import "apps/role/pb/permission.proto";
+
+// RPC 权限查询API
+service RPC {
+    rpc QueryPermission(QueryPermissionRequest) returns(role.PermissionSet);
+    rpc QueryRole(QueryRoleRequest) returns(role.RoleSet);
+    // 校验权限
+    rpc CheckPermission(CheckPermissionRequest) returns(role.Permission);
+}
+
+// QueryPermissionRequest 查询用户权限
+message QueryPermissionRequest {
+    // @gotags: json:"page"
+    infraboard.mcube.page.PageRequest page = 1;
+    // @gotags: json:"namespace"
+    string namespace = 2;
+    // @gotags: json:"username"
+    string username = 3;
+}
+
+// QueryRoleRequest 查询用户权限
+message QueryRoleRequest {
+    // @gotags: json:"page"
+    infraboard.mcube.page.PageRequest page = 1;
+    // @gotags: json:"namespace"
+    string namespace = 2;
+    // @gotags: json:"with_permission"
+    bool with_permission = 3;
+    // @gotags: json:"username"
+    string username = 4;
+}
+
+// CheckPermissionRequest todo
+message CheckPermissionRequest {
+    // 用户
+    // @gotags: json:"username"
+    string username = 1;
+    // 哪个空间
+    // @gotags: json:"namespace"
+    string namespace = 2;
+    // 对那个服务
+    // @gotags: json:"service_id"
+    string service_id = 3;
+    // 那个接口的ID
+    // @gotags: json:"endpoint_id"
+    string endpoint_id = 4;
+    // 接口的Path
+    // @gotags: json:"path"
+    string path = 5;
+    // @gotags: json:"page"
+    infraboard.mcube.page.PageRequest page = 6;
+}

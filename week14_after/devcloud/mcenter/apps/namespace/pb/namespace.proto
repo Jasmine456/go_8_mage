@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package go8.devcloud.mcenter.namespace;
+option go_package = "github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/namespace";
+
+
+// Namespace tenant resource container
+message Namespace {
+    // 空间Id
+    // @gotags: bson:"_id" json:"id"
+    string id = 1;
+    // 创建时间
+    // @gotags: bson:"create_at" json:"create_at"
+    int64 create_at = 2;
+    // 项目修改时间
+    // @gotags: bson:"update_at" json:"update_at"
+    int64 update_at = 3;
+    // 空间定义
+    // @gotags: bson:"spec" json:"spec"
+    CreateNamespaceRequest spec = 4;
+}
+
+enum Visible {
+    // 默认空间是私有的
+    PRIVATE = 0;
+    // PUBLIC  公开的空间, 对所有人可见
+    PUBLIC = 1;
+}
+
+message CreateNamespaceRequest {
+    // 所属域ID
+    // @gotags: bson:"domain" json:"domain"
+    string domain = 1;
+    // 父Namespace Id,  abc.0.0   abc.1.0
+    // @gotags: bson:"parent_id" json:"parent_id"
+    string parent_id = 2;
+    // 关键: 空间名称, 不允许修改
+    // @gotags: bson:"name" json:"name"
+    string name = 3;
+    // 空间负责人
+    // @gotags: bson:"owner" json:"owner"
+    string owner = 4;
+    // 禁用项目, 该项目所有人暂时都无法访问
+    // @gotags: bson:"enabled" json:"enabled"
+    bool enabled = 5;
+    // 项目描述图片
+    // @gotags: bson:"picture" json:"picture"
+    string picture =6;
+    // 项目描述
+    // @gotags: bson:"description" json:"description"
+    string description = 7;
+    // 空间可见性, 默认是私有空间
+    // @gotags: bson:"visible" json:"visible"
+    Visible visible = 8;
+    // 扩展信息
+    // @gotags: bson:"meta" json:"meta"
+    map<string,string> meta = 9;
+}
+
+message NamespaceSet {
+    // 总数量
+    // @gotags: json:"total"
+    int64 total = 1;
+    // 列表
+    // @gotags: json:"items"
+    repeated Namespace items = 2;
+}

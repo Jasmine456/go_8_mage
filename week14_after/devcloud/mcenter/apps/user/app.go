@@ -3,11 +3,11 @@ package user
 import (
 	"context"
 	"fmt"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/domain"
 	"github.com/go-playground/validator/v10"
 	"github.com/infraboard/mcube/exception"
 	"github.com/infraboard/mcube/http/request"
 	"github.com/rs/xid"
-	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/domain"
 	"golang.org/x/crypto/bcrypt"
 	"net/http"
 	"strings"
@@ -21,7 +21,7 @@ const (
 //模块内部接口
 type Service interface {
 	//   创建用户
-	CreateUser(context.Context,  *CreateUserRequest) (*User, error)
+	CreateUser(context.Context, *CreateUserRequest) (*User, error)
 	//   更新用户
 	UpdateUser(context.Context, *UpdateUserRequest) (*User, error)
 	//    删除用户

@@ -5,15 +5,11 @@ import (
 	"github.com/emicklei/go-restful/v3"
 	"github.com/infraboard/mcube/http/response"
 
-
 	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/book"
 )
 
 func (h *handler) CreateBook(r *restful.Request, w *restful.Response) {
 	req := book.NewCreateBookRequest()
-
-
-
 
 	if err := r.ReadEntity(req); err != nil {
 		response.Failed(w.ResponseWriter, err)

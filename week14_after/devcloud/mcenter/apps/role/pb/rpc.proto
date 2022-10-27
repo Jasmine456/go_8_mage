@@ -1,0 +1,107 @@
+syntax = "proto3";
+
+package go8.devcloud.mcenter.role;
+option go_package = "github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/role";
+
+import "apps/role/pb/role.proto";
+import "apps/role/pb/permission.proto";
+import "github.com/infraboard/mcube/pb/page/page.proto";
+
+// RPC 角色RPC服务
+service RPC {
+    // 角色本身查询
+    rpc QueryRole(QueryRoleRequest) returns(RoleSet);
+    rpc DescribeRole(DescribeRoleRequest) returns(Role);
+
+    // 权限的查询
+    rpc QueryPermission(QueryPermissionRequest) returns(PermissionSet);
+    rpc DescribePermission(DescribePermissionRequest) returns(Permission);
+}
+
+// QueryRoleRequest 列表查询
+message QueryRoleRequest {
+    // @gotags: json:"page"
+    infraboard.mcube.page.PageRequest page = 1;
+    // @gotags: json:"type"
+    optional RoleType type = 2;
+    // 属于那个域
+    // @gotags: json:"domain"
+    string domain = 3;
+}
+
+// DescribeRoleRequest role详情
+message DescribeRoleRequest {
+    // @gotags: json:"id"
+    string id = 1;
+    // @gotags: json:"name,omitempty" validate:"required,lte=64"
+    string name = 2;
+    // @gotags: bson:"with_permissions" json:"with_permissions"
+    bool with_permissions = 3;
+    // @gotags: bson:"type" json:"type"
+    RoleType type = 4;
+}
+
+
+// QueryPermissionRequest 查询用户权限
+message QueryPermissionRequest {
+    // @gotags: json:"page"
+    infraboard.mcube.page.PageRequest page = 1;
+    // @gotags: json:"namespace"
+    string namespace = 2;
+    // @gotags: json:"username"
+    string username = 3;
+    // 查询角色权限
+    // @gotags: json:"role_id"
+    string role_id = 4;
+    // 忽略数据
+    // @gotags: json:"skip_items"
+    bool skip_items = 5;
+}
+
+// DescribeRoleRequest role详情
+message DescribePermissionRequest {
+    // @gotags: json:"id"
+    string id = 1;
+}
+
+// DeleteRoleRequest role删除
+message DeleteRoleRequest {
+    // @gotags: json:"id" validate:"required,lte=64"
+    string id = 1;
+    // @gotags: json:"delete_policy"
+    bool delete_policy = 2;
+}
+
+message AddPermissionToRoleRequest {
+    // 创建者ID
+     // @gotags: json:"create_by" validate:"required"
+    string create_by = 3;
+    // @gotags: json:"role_id" validate:"required,lte=64"
+    string role_id = 1;
+    // @gotags: json:"permissions" validate:"required"
+    repeated Spec permissions = 2;
+}
+
+message RemovePermissionFromRoleRequest {
+    // @gotags: json:"role_id" validate:"required,lte=64"
+    string role_id = 1;
+    // @gotags: json:"remove_all"
+    bool remove_all = 2;
+    // @gotags: json:"permission_id"
+    repeated string permission_id = 3;
+}
+
+message UpdatePermissionRequest {
+    // permission id
+    // @gotags: json:"id" validate:"required,lte=64"
+    string id = 1;
+    // 维度
+    // @gotags: json:"label_key"
+    string label_key = 2;
+    // 适配所有值
+    // @gotags: json:"match_all"
+    bool match_all = 3;
+    // 标识值
+    // @gotags: json:"label_values"
+    repeated string label_values = 4;
+}

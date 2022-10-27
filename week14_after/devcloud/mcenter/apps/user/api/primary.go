@@ -2,6 +2,7 @@ package api
 
 import (
 	"fmt"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/user"
 	restfulspec "github.com/emicklei/go-restful-openapi"
 	"github.com/emicklei/go-restful/v3"
 	"github.com/infraboard/mcube/app"
@@ -9,7 +10,6 @@ import (
 	"github.com/infraboard/mcube/http/response"
 	"github.com/infraboard/mcube/logger"
 	"github.com/infraboard/mcube/logger/zap"
-	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/user"
 )
 
 var (
@@ -35,7 +35,6 @@ func (h *primary) Name() string {
 func (h *primary) Version() string {
 	return "v1"
 }
-
 
 // 需要提供的Restful接口
 // 哪些接口 是和哪些类型的用户使用

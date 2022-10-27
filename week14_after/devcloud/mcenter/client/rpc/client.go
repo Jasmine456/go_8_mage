@@ -1,9 +1,10 @@
 package rpc
 
 import (
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/endpoint"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token"
 	"github.com/infraboard/mcube/logger"
 	"github.com/infraboard/mcube/logger/zap"
-	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
@@ -23,14 +24,14 @@ func C() *ClientSet {
 }
 
 // NewClient todo
-func NewClient(address string) (*ClientSet, error) {
+func NewClient(conf *Config) (*ClientSet, error) {
 	zap.DevelopmentSetup()
 	log := zap.L()
 
 	conn, err := grpc.Dial(
-		address,
+		conf.Address,
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
-		//grpc.WithPerRPCCredentials(conf.Authentication),
+		grpc.WithPerRPCCredentials(conf.Credentials()),
 	)
 	if err != nil {
 		return nil, err
@@ -48,7 +49,16 @@ type ClientSet struct {
 	log  logger.Logger
 }
 
-// Book服务的SDK
+// Token服务的SDK
 func (c *ClientSet) Token() token.RPCClient {
 	return token.NewRPCClient(c.conn)
 }
+
+// Endpoint 服务的SDK
+func (c *ClientSet) Endpoint() endpoint.RPCClient {
+	return endpoint.NewRPCClient(c.conn)
+}
+
+// 如何注册，获取到当前所有的路由定义，把这些路由定义转化为Endpoint，然后进行注册
+// Gin 不支持
+// GoRestful支持

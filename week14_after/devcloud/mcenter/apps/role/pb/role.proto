@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package go8.devcloud.mcenter.role;
+option go_package = "github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/role";
+
+import "apps/role/pb/permission.proto";
+
+// RoleType 角色
+enum RoleType {
+    // 内建角色, 系统初始时创建
+    BUILDIN = 0;
+    // 管理员创建的一些角色, 全局可用
+    GLOBAL = 1;
+    // 用户自定义的角色, 仅域内可见
+    CUSTOM = 2;
+}
+
+// Role is rbac's role
+message Role {
+    // 角色ID
+    // @gotags: bson:"_id" json:"id"
+    string id = 1;
+    // 创建时间
+    // @gotags: bson:"create_at" json:"create_at"
+    int64 create_at = 2;
+    // 更新时间
+    // @gotags: bson:"update_at" json:"update_at"
+    int64 update_at = 3;
+    // 范围, 角色范围限制, 由策略引擎动态补充
+    // @gotags: bson:"-" json:"scope"
+    string scope = 4;
+    // 角色描述信息
+    // @gotags: bson:"spec" json:"spec"
+    CreateRoleRequest spec = 5;
+}
+
+message RoleSet {
+    // @gotags: bson:"total" json:"total"
+    int64 total = 1;
+    // @gotags: bson:"items" json:"items"
+    repeated Role items = 2;
+}
+
+// CreateRoleRequest 创建角色请求
+message CreateRoleRequest {
+    // 所属域
+    // @gotags: bson:"domain" json:"domain"
+    string domain = 1;
+    // 创建者ID
+    // @gotags: bson:"create_by" json:"create_by"
+    string create_by = 2;
+    // 角色类型
+    // @gotags: bson:"type" json:"type"
+    RoleType type = 3;
+    // 角色名称
+    // @gotags: bson:"name" json:"name" validate:"required,lte=30"
+    string name = 4;
+    // 角色描述
+    // @gotags: bson:"description" json:"description" validate:"lte=400"
+    string description =5;
+    // 读权限
+    // @gotags: bson:"-" json:"permissions,omitempty"
+    repeated Permission permissions = 6;
+    // 角色关联的其他信息，比如展示的视图
+    // @gotags: bson:"meta" json:"meta" validate:"lte=400"
+    map<string,string> meta =7;
+}

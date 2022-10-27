@@ -4,6 +4,7 @@ import (
 	restfulspec "github.com/emicklei/go-restful-openapi"
 	"github.com/emicklei/go-restful/v3"
 	"github.com/infraboard/mcube/app"
+	"github.com/infraboard/mcube/http/label"
 	"github.com/infraboard/mcube/http/response"
 	"github.com/infraboard/mcube/logger"
 	"github.com/infraboard/mcube/logger/zap"
@@ -40,6 +41,15 @@ func (h *handler) Registry(ws *restful.WebService) {
 	ws.Route(ws.POST("").To(h.CreateBook).
 		Doc("create a book").
 		Metadata(restfulspec.KeyOpenAPITags, tags).
+		//开启认证
+		Metadata(label.Auth,true).
+		//开启鉴权
+		Metadata(label.Resource,h.Name()).
+		//该接口操作操作的资源名称
+		Metadata(label.Permission,true).
+		//标注该资源的具体动态
+		Metadata(label.Action,label.Create).
+
 		Reads(book.CreateBookRequest{}).
 		Writes(response.NewData(book.Book{})))
 

@@ -1,15 +1,15 @@
 package impl
 
 import (
-	"go.mongodb.org/mongo-driver/mongo"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token/provider"
 	"github.com/infraboard/mcube/app"
 	"github.com/infraboard/mcube/logger"
 	"github.com/infraboard/mcube/logger/zap"
-	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token/provider"
+	"go.mongodb.org/mongo-driver/mongo"
 	"google.golang.org/grpc"
 
-	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/conf"
 	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/conf"
 
 	// 加载所有的provider
 	_ "github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token/provider/all"

@@ -3,6 +3,7 @@ package protocol
 import (
 	"context"
 	"fmt"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/client/rpc/auth"
 	"net/http"
 	"time"
 
@@ -39,9 +40,11 @@ func NewHTTPService() *HTTPService {
 	//2. 如果有100个微服务都需要接入到用户中心，都需要认证，每个模块独立维护一套 会带来很大维护成本，抽象成一个公共库
 	//3. 公共库：怎么保证公开哭的可用性，服务端和客户端能力拆开，需要单独验证客户端的 能否正常
 	//4. 服务端自己维护自己的中间件，服务端就是中间件的提供方 同时通过服务端
-
-
-
+	am, err := auth.NewAuther("127.0.0.1:18050")
+	if err != nil {
+		panic(err)
+	}
+	r.Filter(am.GoRestfulAutherFun)
 
 	server := &http.Server{
 		ReadHeaderTimeout: 60 * time.Second,
@@ -107,4 +110,20 @@ func (s *HTTPService) Stop() error {
 		s.l.Errorf("graceful shutdown timeout, force exit")
 	}
 	return nil
+}
+
+//注册功能列表
+func (s *HTTPService) registryEndpoint() {
+	wss := s.r.RegisteredWebServices()
+	for i := range wss {
+		routes := wss[i].Routes()
+		eps := tools.TransferRoutesToEndpoints(routes)
+		fmt.Println(eps)
+		//for j:=range routes{
+		//	r:=routes[j]
+		//
+		//	fmt.Println(r.Metadata,r.Path,r.Metadata,r.Operation)
+		//}
+
+	}
 }

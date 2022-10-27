@@ -73,6 +73,21 @@ func (s *HTTPService) Start() error {
 	// 装置子服务路由
 	app.LoadRESTfulApp(s.PathPrefix(), s.r)
 
+	// 能否获取所有的路由定义, RegisteredWebServices 可以获取到当前所有注册条目，并包含meta信息
+	// 测试enpoints的Entry的转化逻辑的是否正常
+	//wss := s.r.RegisteredWebServices()
+	//for i := range wss {
+	//	routes := wss[i].Routes()
+	//	eps:=tools.TransferRoutesToEndpoints(routes)
+	//	fmt.Println(eps)
+	//	//for j:=range routes{
+	//	//	r:=routes[j]
+	//	//
+	//	//	fmt.Println(r.Metadata,r.Path,r.Metadata,r.Operation)
+	//	//}
+	//
+	//}
+
 	// API Doc
 	config := restfulspec.Config{
 		WebServices:                   restful.RegisteredWebServices(), // you control what services are visible

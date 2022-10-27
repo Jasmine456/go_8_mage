@@ -1,6 +1,7 @@
 package protocol
 
 import (
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/protocol/auth"
 	"net"
 
 	"google.golang.org/grpc"
@@ -20,6 +21,7 @@ func NewGRPCService() *GRPCService {
 	rc := recovery.NewInterceptor(recovery.NewZapRecoveryHandler())
 	grpcServer := grpc.NewServer(grpc.ChainUnaryInterceptor(
 		rc.UnaryServerInterceptor(),
+		auth.GrpcAuthUnaryServerInterceptor(),
 	))
 
 	return &GRPCService{

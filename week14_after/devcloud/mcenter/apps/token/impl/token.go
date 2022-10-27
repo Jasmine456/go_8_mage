@@ -3,9 +3,9 @@ package impl
 import (
 	"context"
 	"fmt"
-	"github.com/infraboard/mcube/exception"
 	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token"
 	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token/provider"
+	"github.com/infraboard/mcube/exception"
 )
 
 func (s *service) IssueToken(ctx context.Context, req *token.IssueTokenRequest) (
@@ -38,7 +38,6 @@ func (s *service) IssueTokenNow(ctx context.Context, req *token.IssueTokenReques
 
 	return tk, nil
 }
-
 
 // 撤销Token
 func (s *service) RevolkToken(ctx context.Context, req *token.RevolkTokenRequest) (
@@ -89,4 +88,3 @@ func (s *service) ValidateToken(ctx context.Context, req *token.ValidateTokenReq
 func (s *service) QueryToken(ctx context.Context, req *token.QueryTokenRequest) (*token.TokenSet, error) {
 	return nil, nil
 }
-

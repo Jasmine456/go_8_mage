@@ -1,9 +1,9 @@
 package auth
 
 import (
-	"github.com/emicklei/go-restful/v3"
 	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token"
 	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/client/rpc"
+	"github.com/emicklei/go-restful/v3"
 	"github.com/infraboard/mcube/http/label"
 	"github.com/infraboard/mcube/http/response"
 	"github.com/infraboard/mcube/logger"
@@ -15,15 +15,15 @@ import (
 //// FilterFunction definitions must call ProcessFilter on the FilterChain to pass on the control and eventually call the RouteFunction
 //type FilterFunction func(*Request, *Response, *FilterChain)
 
-func NewAuther(mcenterAddress string) (*Auther,error) {
-	client,err:=rpc.NewClient(mcenterAddress)
+func NewAuther(conf *rpc.Config) (*Auther, error) {
+	client, err := rpc.NewClient(conf)
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
 	return &Auther{
-		log: zap.L().Named("auther.http"),
+		log:    zap.L().Named("auther.http"),
 		client: client,
-	},nil
+	}, nil
 }
 
 type Auther struct {
@@ -39,7 +39,7 @@ func (a *Auther) GoRestfulAutherFun(req *restful.Request, resp *restful.Response
 	meta := req.SelectedRoute().Metadata()
 	a.log.Debug("route meta: ", meta)
 
-	isAuth,ok:=meta[label.Auth]
+	isAuth, ok := meta[label.Auth]
 	// 有认证标签，并且开启了认证
 	if ok && isAuth.(bool) {
 		//获取用户Token,Token放在Header Authorization
@@ -52,8 +52,15 @@ func (a *Auther) GoRestfulAutherFun(req *restful.Request, resp *restful.Response
 			return
 		}
 
-	//	是不是需要返回用户的认证信息：哪个人，在哪个空间下面， token本身的信息
-	req.SetAttribute("tk",tk)
+		//	是不是需要返回用户的认证信息：哪个人，在哪个空间下面， token本身的信息
+		req.SetAttribute("tk", tk)
+
+		//	判断用户权限
+		isPerm, ok := meta[label.Permission]
+		if ok && isPerm.(bool) {
+
+		}
+
 	}
 	// next flow
 	next.ProcessFilter(req, resp)

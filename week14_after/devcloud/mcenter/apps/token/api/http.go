@@ -1,13 +1,13 @@
 package api
 
 import (
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token"
 	restfulspec "github.com/emicklei/go-restful-openapi"
 	"github.com/emicklei/go-restful/v3"
 	"github.com/infraboard/mcube/app"
 	"github.com/infraboard/mcube/http/response"
 	"github.com/infraboard/mcube/logger"
 	"github.com/infraboard/mcube/logger/zap"
-	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token"
 
 	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/book"
 )
