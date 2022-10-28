@@ -27,6 +27,7 @@ func NewClient(conf *Config) (*ClientSet, error) {
 	return &ClientSet{
 		conn: conn,
 		log:  log,
+		conf: conf,
 	}, nil
 }
 
@@ -34,6 +35,7 @@ func NewClient(conf *Config) (*ClientSet, error) {
 type ClientSet struct {
 	conn *grpc.ClientConn
 	log  logger.Logger
+	conf *Config
 }
 
 // Token服务的SDK
@@ -50,7 +52,14 @@ func (c *ClientSet) Endpoint() endpoint.RPCClient {
 // Gin 不支持
 // GoRestful支持
 
-// Service 服务的SDK
+// Service 内部服务管理
 func (c *ClientSet) Service() service.RPCClient {
 	return service.NewRPCClient(c.conn)
+}
+
+//这个地方有安全风险
+func (c *ClientSet)Config() Config{
+	// c.conf.ClientSecret 是有风险的
+	// ？什么情况下 client secret会泄露
+	return *c.conf
 }
