@@ -33,6 +33,7 @@ func TestValidateToken(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+	client.Service().ValidateCredential()
 	t.Log(tk)
 }
 
@@ -62,9 +63,9 @@ func TestEndpointRegistry(t *testing.T) {
 }
 
 func init() {
-	c, err := rpc.NewClientFromEnv()
+	err := rpc.LoadNewClientFromEnv()
 	if err != nil {
 		panic(err)
 	}
-	client = c
+	client = rpc.C()
 }

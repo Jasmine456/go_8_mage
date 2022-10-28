@@ -2,26 +2,13 @@ package rpc
 
 import (
 	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/endpoint"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/service"
 	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token"
 	"github.com/infraboard/mcube/logger"
 	"github.com/infraboard/mcube/logger/zap"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
-
-var (
-	client *ClientSet
-)
-
-// SetGlobal todo
-func SetGlobal(cli *ClientSet) {
-	client = cli
-}
-
-// C Global
-func C() *ClientSet {
-	return client
-}
 
 // NewClient todo
 func NewClient(conf *Config) (*ClientSet, error) {
@@ -62,3 +49,8 @@ func (c *ClientSet) Endpoint() endpoint.RPCClient {
 // 如何注册，获取到当前所有的路由定义，把这些路由定义转化为Endpoint，然后进行注册
 // Gin 不支持
 // GoRestful支持
+
+// Service 服务的SDK
+func (c *ClientSet) Service() service.RPCClient {
+	return service.NewRPCClient(c.conn)
+}

@@ -15,25 +15,25 @@ import (
 //// FilterFunction definitions must call ProcessFilter on the FilterChain to pass on the control and eventually call the RouteFunction
 //type FilterFunction func(*Request, *Response, *FilterChain)
 
-func NewAuther(conf *rpc.Config) (*Auther, error) {
+func NewHttpAuther(conf *rpc.Config) (*HttpAuther, error) {
 	client, err := rpc.NewClient(conf)
 	if err != nil {
 		return nil, err
 	}
-	return &Auther{
+	return &HttpAuther{
 		log:    zap.L().Named("auther.http"),
 		client: client,
 	}, nil
 }
 
-type Auther struct {
+type HttpAuther struct {
 	log logger.Logger
 	//	基于rpc的客户端
 	client *rpc.ClientSet
 }
 
 // 是否开启权限的控制，交给中间件使用方去决定
-func (a *Auther) GoRestfulAutherFun(req *restful.Request, resp *restful.Response, next *restful.FilterChain) {
+func (a *HttpAuther) GoRestfulHttpAutherFun(req *restful.Request, resp *restful.Response, next *restful.FilterChain) {
 
 	// 请求拦截
 	meta := req.SelectedRoute().Metadata()

@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	AppName = "tools"
+	AppName = "endpoint"
 )
 
 type Service interface {
