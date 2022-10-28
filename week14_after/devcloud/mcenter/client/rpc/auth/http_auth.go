@@ -15,14 +15,11 @@ import (
 //// FilterFunction definitions must call ProcessFilter on the FilterChain to pass on the control and eventually call the RouteFunction
 //type FilterFunction func(*Request, *Response, *FilterChain)
 
-func NewHttpAuther(conf *rpc.Config) (*HttpAuther, error) {
-	client, err := rpc.NewClient(conf)
-	if err != nil {
-		return nil, err
-	}
+func NewHttpAuther() (*HttpAuther, error) {
 	return &HttpAuther{
 		log:    zap.L().Named("auther.http"),
-		client: client,
+		// 从全局变量获取
+		client: rpc.C(),
 	}, nil
 }
 
