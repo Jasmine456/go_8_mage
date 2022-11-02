@@ -6,10 +6,9 @@ import (
 	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/role"
 
 	"github.com/infraboard/mcube/exception"
+	"github.com/infraboard/mcube/http/request"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
-
-
 )
 
 func (s *impl) CreateRole(ctx context.Context, req *role.CreateRoleRequest) (*role.Role, error) {
@@ -18,10 +17,22 @@ func (s *impl) CreateRole(ctx context.Context, req *role.CreateRoleRequest) (*ro
 		return nil, err
 	}
 
+	// 角色对象入库了, 并没有入库permission
 	if _, err := s.role.InsertOne(ctx, r); err != nil {
 		return nil, exception.NewInternalServerError("inserted role(%s) document error, %s",
 			r.Spec.Name, err)
 	}
+
+	// 入库permission, 入库到permission表
+	addReq := role.NewAddPermissionToRoleRequest()
+	addReq.CreateBy = req.CreateBy
+	addReq.RoleId = r.Id
+	addReq.Permissions = req.Specs
+	perms, err := s.AddPermissionToRole(ctx, addReq)
+	if err != nil {
+		return nil, err
+	}
+	r.Permissions = perms.Items
 	return r, nil
 }
 
@@ -44,6 +55,19 @@ func (s *impl) QueryRole(ctx context.Context, req *role.QueryRoleRequest) (*role
 		if err := resp.Decode(ins); err != nil {
 			return nil, exception.NewInternalServerError("decode role error, error is %s", err)
 		}
+		// 是不是查询所有角色的时候都需要补充permission, 前端界面 需要用户选择一个角色 1000 role
+		// 补充角色的Permission
+		if req.WithPermission {
+			pReq := role.NewQueryPermissionRequest()
+			pReq.RoleId = ins.Id
+			pReq.Page = request.NewPageRequest(role.RoleMaxPermission, 1)
+			ps, err := s.QueryPermission(ctx, pReq)
+			if err != nil {
+				return nil, err
+			}
+			ins.Permissions = ps.Items
+		}
+
 		set.Add(ins)
 	}
 
@@ -70,6 +94,19 @@ func (s *impl) DescribeRole(ctx context.Context, req *role.DescribeRoleRequest) 
 		}
 
 		return nil, exception.NewInternalServerError("find role %s error, %s", req, err)
+	}
+
+	// 是不是查询所有角色的时候都需要补充permission, 前端界面 需要用户选择一个角色 1000 role
+	// 补充角色的Permission
+	if req.WithPermissions {
+		pReq := role.NewQueryPermissionRequest()
+		pReq.RoleId = ins.Id
+		pReq.Page = request.NewPageRequest(role.RoleMaxPermission, 1)
+		ps, err := s.QueryPermission(ctx, pReq)
+		if err != nil {
+			return nil, err
+		}
+		ins.Permissions = ps.Items
 	}
 
 	return ins, nil

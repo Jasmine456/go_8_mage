@@ -3,10 +3,12 @@ package role
 import (
 	"context"
 	"fmt"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/endpoint"
 	"hash/fnv"
 	"time"
 
 	"github.com/go-playground/validator/v10"
+	"github.com/infraboard/mcube/exception"
 	request "github.com/infraboard/mcube/http/request"
 	"github.com/rs/xid"
 )
@@ -77,6 +79,65 @@ func (s *RoleSet) Add(item *Role) {
 	s.Items = append(s.Items, item)
 }
 
+func (s *RoleSet) HasPerm(ed *endpoint.Endpoint) *Permission {
+	for i := range s.Items {
+		perm := s.Items[i].HasPerm(ed)
+		if perm != nil {
+			return perm
+		}
+	}
+
+	return nil
+}
+
+// 判断该角色是否具有权限A
+func (r *Role) HasPerm(ed *endpoint.Endpoint) *Permission {
+	for i := range r.Permissions {
+		perm := r.Permissions[i]
+		if perm.HasPerm(ed) {
+			return perm
+		}
+	}
+
+	return nil
+}
+
+func (p *Permission) HasPerm(ed *endpoint.Endpoint) bool {
+	if ed == nil {
+		return false
+	}
+
+	// 开启了鉴权的
+	// ed.ServiceId
+	// ed.Entry.Resource
+	// ed.Entry.Labels
+	if ed.Entry.PermissionEnable {
+		// 1. service能匹配
+		if p.Spec.ServiceId == "*" || p.Spec.ServiceId == ed.ServiceId {
+			// 2. resource 匹配
+			if p.Spec.ResourceName == "*" || p.Spec.ResourceName == ed.Entry.Resource {
+				// 3. labels是否匹配: 判断ep的label 是否匹配 permisson允许的label
+				for k, v := range ed.Entry.Labels {
+					// 3.1匹配Key
+					if p.Spec.LabelKey == "*" || k == p.Spec.LabelKey {
+						// 3.2匹配value
+						if p.Spec.MatchAll {
+							return true
+						}
+						for _, allow := range p.Spec.LabelValues {
+							if allow == v {
+								return true
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	return false
+}
+
 // NewDefaultRole 默认实例
 func NewDefaultRole() *Role {
 	spec := NewCreateRoleRequest()
@@ -145,9 +206,9 @@ func (s *PermissionSet) Add(items ...*Permission) {
 }
 
 // NewQueryPermissionRequest todo
-func NewQueryPermissionRequest(pageReq *request.PageRequest) *QueryPermissionRequest {
+func NewQueryPermissionRequest() *QueryPermissionRequest {
 	return &QueryPermissionRequest{
-		Page: pageReq,
+		Page: request.NewDefaultPageRequest(),
 	}
 }
 
@@ -174,4 +235,30 @@ func (req *Spec) HashID(roleId string) string {
 
 	h.Write([]byte(roleId + req.Effect.String() + req.ServiceId + req.ResourceName))
 	return fmt.Sprintf("%x", h.Sum32())
+}
+
+func (req *UpdatePermissionRequest) Validate() error {
+	if req.Id == "" {
+		return exception.NewBadRequest("id required")
+	}
+
+	return nil
+}
+
+func NewDescribePermissionRequestWithID(id string) *DescribePermissionRequest {
+	return &DescribePermissionRequest{Id: id}
+}
+
+// NewAddPermissionToRoleRequest todo
+func NewAddPermissionToRoleRequest() *AddPermissionToRoleRequest {
+	return &AddPermissionToRoleRequest{
+		Permissions: []*Spec{},
+	}
+}
+
+// NewQueryRoleRequest 列表查询请求
+func NewQueryRoleRequest() *QueryRoleRequest {
+	return &QueryRoleRequest{
+		Page: request.NewDefaultPageRequest(),
+	}
 }

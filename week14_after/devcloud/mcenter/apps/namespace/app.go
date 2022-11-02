@@ -8,7 +8,6 @@ const (
 	DEFAULT_NAMESPACE = "default"
 )
 
-
 type Service interface {
 	RPCServer
 }

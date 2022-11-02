@@ -30,10 +30,9 @@ func newGrpcAuther(svr service.MetaService) *grpcAuther {
 
 // internal todo
 type grpcAuther struct {
-	log logger.Logger
+	log     logger.Logger
 	service service.MetaService
 }
-
 
 // grpc 中间件签名函数
 func (a *grpcAuther) Auth(
@@ -57,7 +56,6 @@ func (a *grpcAuther) Auth(
 	resp, err = handler(ctx, req)
 	return resp, err
 }
-
 
 func (a *grpcAuther) GetClientCredentialsFromMeta(md metadata.MD) (
 	clientId, clientSecret string) {

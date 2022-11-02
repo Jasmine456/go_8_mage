@@ -3,9 +3,10 @@ package impl
 import (
 	"context"
 	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/role"
+	"github.com/infraboard/mcube/http/request"
+	"go.mongodb.org/mongo-driver/bson"
 
 	"github.com/infraboard/mcube/exception"
-	"github.com/infraboard/mcube/http/request"
 )
 
 func (s *impl) QueryPermission(ctx context.Context, req *role.QueryPermissionRequest) (*role.PermissionSet, error) {
@@ -53,7 +54,8 @@ func (s *impl) AddPermissionToRole(ctx context.Context, req *role.AddPermissionT
 	}
 
 	// 查询角色条目数是否超标
-	queryPerm := role.NewQueryPermissionRequest(request.NewPageRequest(role.RoleMaxPermission, 1))
+	queryPerm := role.NewQueryPermissionRequest()
+	queryPerm.Page = request.NewPageRequest(role.RoleMaxPermission, 1)
 	queryPerm.SkipItems = true
 	queryPerm.RoleId = ins.Id
 	ps, err := s.QueryPermission(ctx, queryPerm)
@@ -97,4 +99,25 @@ func (s *impl) RemovePermissionFromRole(ctx context.Context, req *role.RemovePer
 
 	set := role.NewPermissionSet()
 	return set, nil
+}
+
+func (s *impl) UpdatePermission(ctx context.Context, req *role.UpdatePermissionRequest) (*role.Permission, error) {
+	if err := req.Validate(); err != nil {
+		return nil, exception.NewBadRequest("validate remove permission error, %s", err)
+	}
+
+	ins, err := s.DescribePermission(ctx, role.NewDescribePermissionRequestWithID(req.Id))
+	if err != nil {
+		return nil, err
+	}
+
+	ins.Spec.LabelKey = req.LabelKey
+	ins.Spec.MatchAll = req.MatchAll
+	ins.Spec.LabelValues = req.LabelValues
+
+	_, err = s.perm.UpdateOne(ctx, bson.M{"_id": ins.Id}, bson.M{"$set": ins})
+	if err != nil {
+		return nil, exception.NewInternalServerError("update permission(%s) error, %s", ins.Id, err)
+	}
+	return ins, nil
 }

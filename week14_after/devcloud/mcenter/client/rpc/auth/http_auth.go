@@ -1,6 +1,8 @@
 package auth
 
 import (
+	"fmt"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/permission"
 	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token"
 	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/client/rpc"
 	"github.com/emicklei/go-restful/v3"
@@ -17,7 +19,7 @@ import (
 
 func NewHttpAuther() (*HttpAuther, error) {
 	return &HttpAuther{
-		log:    zap.L().Named("auther.http"),
+		log: zap.L().Named("auther.http"),
 		// 从全局变量获取
 		client: rpc.C(),
 	}, nil
@@ -33,7 +35,8 @@ type HttpAuther struct {
 func (a *HttpAuther) GoRestfulHttpAutherFun(req *restful.Request, resp *restful.Response, next *restful.FilterChain) {
 
 	// 请求拦截
-	meta := req.SelectedRoute().Metadata()
+	route:=req.SelectedRoute()
+	meta := route.Metadata()
 	a.log.Debug("route meta: ", meta)
 
 	isAuth, ok := meta[label.Auth]
@@ -55,7 +58,26 @@ func (a *HttpAuther) GoRestfulHttpAutherFun(req *restful.Request, resp *restful.
 		//	判断用户权限
 		isPerm, ok := meta[label.Permission]
 		if ok && isPerm.(bool) {
+			ci,err:=a.client.ClientInfo(req.Request.Context())
+			if err != nil {
+				response.Failed(resp.ResponseWriter,err)
+				return
+			}
 
+			//	调用鉴权接口
+			check:=permission.NewCheckPermissionRequest()
+			check.Domain=tk.Domain
+			check.Namespace=tk.Namespace
+			check.Username=tk.Username
+			check.ServiceId=ci.Id
+			check.Path = fmt.Sprintf("%s.%s",route.Method(),route.Path())
+
+			perm,err:=a.client.Permission().CheckPermission(req.Request.Context(),check)
+			if err != nil {
+				response.Failed(resp.ResponseWriter,err)
+				return
+			}
+			a.log.Debugf("permission check pass: %s",perm)
 		}
 
 	}

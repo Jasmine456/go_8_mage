@@ -8,7 +8,6 @@ import (
 
 //实例类的具体方法
 
-
 // 校验服务的凭证
 func (i *impl) ValidateCredential(ctx context.Context, req *service.ValidateCredentialRequest) (
 	*service.Service, error) {
@@ -24,7 +23,6 @@ func (i *impl) ValidateCredential(ctx context.Context, req *service.ValidateCred
 
 	return svr, nil
 }
-
 
 func (i *impl) DescribeService(ctx context.Context, req *service.DescribeServiceRequest) (
 	*service.Service, error) {

@@ -42,4 +42,3 @@ func (i *impl) get(ctx context.Context, req *service.DescribeServiceRequest) (*s
 
 	return ins, nil
 }
-

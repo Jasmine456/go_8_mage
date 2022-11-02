@@ -103,8 +103,10 @@ func newDefaultLog() *log {
 
 func newDefaultMongoDB() *mongodb {
 	return &mongodb{
-		Database:  "",
-		Endpoints: []string{"127.0.0.1:27017"},
+		Database:  "mcenter",
+		Endpoints: []string{"10.20.2.117:27017"},
+		UserName:  "mcenter",
+		Password:  "123456",
 	}
 }
 

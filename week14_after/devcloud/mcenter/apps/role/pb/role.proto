@@ -1,9 +1,10 @@
 syntax = "proto3";
 
 package go8.devcloud.mcenter.role;
-option go_package = "github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/role";
 
 import "apps/role/pb/permission.proto";
+
+option go_package = "github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/role";
 
 // RoleType 角色
 enum RoleType {
@@ -32,6 +33,10 @@ message Role {
     // 角色描述信息
     // @gotags: bson:"spec" json:"spec"
     CreateRoleRequest spec = 5;
+    // 角色描述信息 permission 是动态补充的
+    // @gotags: bson:"-" json:"permissions"
+    repeated Permission permissions = 6;
+
 }
 
 message RoleSet {
@@ -57,11 +62,11 @@ message CreateRoleRequest {
     string name = 4;
     // 角色描述
     // @gotags: bson:"description" json:"description" validate:"lte=400"
-    string description =5;
+    string description = 5;
     // 读权限
-    // @gotags: bson:"-" json:"permissions,omitempty"
-    repeated Permission permissions = 6;
+    // @gotags: bson:"-" json:"specs,omitempty"
+    repeated Spec specs = 6;
     // 角色关联的其他信息，比如展示的视图
     // @gotags: bson:"meta" json:"meta" validate:"lte=400"
-    map<string,string> meta =7;
+    map<string, string> meta = 7;
 }

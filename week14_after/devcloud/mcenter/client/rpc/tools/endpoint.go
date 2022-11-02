@@ -8,7 +8,7 @@ import (
 )
 
 // 用于route转换成 Entry
-func TransferRoutesToEndpoints(routes []restful.Route) (endpoints []*endpoint.Entry){
+func TransferRoutesToEndpoints(routes []restful.Route) (endpoints []*endpoint.Entry) {
 	for _, r := range routes {
 		var resource, action string
 		var authEnabled, permEnabled bool

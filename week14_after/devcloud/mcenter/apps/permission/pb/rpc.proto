@@ -42,18 +42,24 @@ message CheckPermissionRequest {
     // 用户
     // @gotags: json:"username"
     string username = 1;
-    // 哪个空间
+    // 域
+    // @gotags: json:"domain"
+    string domain = 8;
+    // 那个空间
     // @gotags: json:"namespace"
     string namespace = 2;
+    // 那个组
+    // @gotags: json:"group"
+    string group = 3;
     // 对那个服务
     // @gotags: json:"service_id"
-    string service_id = 3;
+    string service_id = 4;
     // 那个接口的ID
     // @gotags: json:"endpoint_id"
-    string endpoint_id = 4;
+    string endpoint_id = 5;
     // 接口的Path
     // @gotags: json:"path"
-    string path = 5;
+    string path = 6;
     // @gotags: json:"page"
-    infraboard.mcube.page.PageRequest page = 6;
+    infraboard.mcube.page.PageRequest page = 7;
 }
