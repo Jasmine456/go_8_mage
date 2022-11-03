@@ -1,7 +1,7 @@
 PROJECT_NAME := "maudit"
 MAIN_FILE_PAHT := "main.go"
-PKG := "github.com/go_8_mage/week14_after/devcloud/maudit"
-IMAGE_PREFIX := "github.com/go_8_mage/week14_after/devcloud/maudit"
+PKG := "github.com/Jasmine456/go_8_mage/week14_after/devcloud/maudit"
+IMAGE_PREFIX := "github.com/Jasmine456/go_8_mage/week14_after/devcloud/maudit"
 
 MOD_DIR := $(shell go env GOPATH)/pkg/mod
 PKG_LIST := $(shell go list ${PKG}/... | grep -v /vendor/ | grep -v redis)

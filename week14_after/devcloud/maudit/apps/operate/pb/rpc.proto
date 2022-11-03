@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package go8.devcloud.maudit.operate;
+
+option go_package = "github.com/Jasmine456/go_8_mage/week14_after/devcloud/maudit/apps/operate";
+
+
+import "apps/operate/pb/operate.proto";
+import "github.com/infraboard/mcube/pb/page/page.proto";
+
+service RPC {
+    rpc SaveOperateLog(OperateLog) returns(SaveOperateLogResponse);
+    rpc QueryOperateLog(QueryOperateLogRequest) returns(OperateLogSet);
+}
+
+message SaveOperateLogResponse {
+    // 返回的消息
+    // @gotags: json:"message" bson:"message"
+    string message = 1;
+}
+
+message QueryOperateLogRequest {
+    // 分页参数
+    // @gotags: json:"page"
+    infraboard.mcube.page.PageRequest page = 1;
+    // 返回的消息
+    // @gotags: json:"username" bson:"username"
+    string username = 2;
+}

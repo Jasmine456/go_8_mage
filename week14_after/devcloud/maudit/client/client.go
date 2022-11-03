@@ -8,7 +8,7 @@ package client
 //	"google.golang.org/grpc"
 //	"google.golang.org/grpc/credentials/insecure"
 //
-//	"github.com/go_8_mage/week14_after/devcloud/maudit/apps/book"
+//	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/maudit/apps/book"
 //)
 //
 //var (

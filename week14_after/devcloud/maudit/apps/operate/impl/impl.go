@@ -1,6 +1,7 @@
 package impl
 
 import (
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/maudit/apps/operate"
 	"go.mongodb.org/mongo-driver/mongo"
 
 	"github.com/infraboard/mcube/app"
@@ -8,7 +9,6 @@ import (
 	"github.com/infraboard/mcube/logger/zap"
 	"google.golang.org/grpc"
 
-	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/maudit/apps/book"
 	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/maudit/conf"
 )
 
@@ -20,7 +20,7 @@ var (
 type service struct {
 	col *mongo.Collection
 	log logger.Logger
-	book.UnimplementedServiceServer
+	operate.UnimplementedRPCServer
 }
 
 func (s *service) Config() error {
@@ -36,11 +36,11 @@ func (s *service) Config() error {
 }
 
 func (s *service) Name() string {
-	return book.AppName
+	return operate.AppName
 }
 
 func (s *service) Registry(server *grpc.Server) {
-	book.RegisterServiceServer(server, svr)
+	operate.RegisterRPCServer(server, svr)
 }
 
 func init() {

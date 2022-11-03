@@ -1,4 +1,4 @@
-pkg: github.com/go_8_mage/week14_after/devcloud/maudit
+pkg: github.com/Jasmine456/go_8_mage/week14_after/devcloud/maudit
 name: maudit
 description: 微服务操作审计模块
 enable_keyauth: false

@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/token"
 	"github.com/emicklei/go-restful/v3"
-	"github.com/go_8_mage/week14_after/devcloud/maudit/apps/book"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/maudit/apps/book"
 	"github.com/infraboard/mcube/http/response"
 )
 
 func (h *handler) CreateBook(r *restful.Request, w *restful.Response) {
 	req := book.NewCreateBookRequest()
-	if req ==nil{
+	if req == nil {
 		response.Failed(w.ResponseWriter, fmt.Errorf("请添加创建book参数"))
 		return
 	}

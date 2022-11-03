@@ -9,7 +9,7 @@ import (
 	"github.com/infraboard/mcube/logger"
 	"github.com/infraboard/mcube/logger/zap"
 
-	"github.com/go_8_mage/week14_after/devcloud/maudit/apps/book"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/maudit/apps/book"
 )
 
 var (
@@ -59,7 +59,6 @@ func (h *handler) Registry(ws *restful.WebService) {
 		Metadata(label.Auth, true).
 		//开启鉴权
 		Metadata(label.Permission, true).
-
 		Metadata(restfulspec.KeyOpenAPITags, tags).
 		// 该接口操作的资源名称
 		Metadata(label.Resource, h.Name()).

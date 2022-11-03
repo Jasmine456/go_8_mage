@@ -8,8 +8,8 @@ package client_test
 //
 //	"github.com/stretchr/testify/assert"
 //
-//	"github.com/go_8_mage/week14_after/devcloud/maudit/apps/book"
-//	"github.com/go_8_mage/week14_after/devcloud/maudit/client"
+//	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/maudit/apps/book"
+//	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/maudit/client"
 //)
 //
 //func TestBookQuery(t *testing.T) {

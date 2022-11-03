@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package go8.devcloud.maudit.operate;
+
+option go_package = "github.com/Jasmine456/go_8_mage/week14_after/devcloud/maudit/apps/operate";
+
+
+//操作日志
+// Who When What（操作
+message OperateLog {
+    // 用户域
+    // @gotags: json:"domain" bson:"domain" validate:"required"
+    string domain = 1;
+    // 用户所处空间
+    // @gotags: json:"namespace" bson:"namespace" validate:"required"
+    string namespace = 2;
+    // 操作人
+    // @gotags: json:"username" bson:"username" validate:"required"
+    string username = 3;
+    // 操作人
+    // @gotags: json:"user_agent" bson:"user_agent"
+    string user_agent = 4;
+    // 操作时间, 毫秒的时间戳
+    // @gotags: json:"time" bson:"time"
+    int64 time = 5;
+    // 操作资源类型
+    // @gotags: json:"resource_type" bson:"resource_type" validate:"required"
+    string resource_type = 6;
+    // 操作资源类型
+    // @gotags: json:"resource_id" bson:"resource_id"
+    string resource_id = 7;
+    // 执行的操作
+    // @gotags: json:"action" bson:"action" validate:"required"
+    string action = 8;
+    // 执行的操作
+    // @gotags: json:"detail" bson:"detail"
+    string detail = 9;
+    // 请求参数 json string
+    // @gotags: json:"request" bson:"request"
+    string request = 11;
+    // 响应参数 json string
+    // @gotags: json:"response" bson:"response"
+    string response = 12;
+    // 执行的操作
+    // @gotags: json:"external" bson:"external"
+    map<string,string> external = 10;
+}
+
+message OperateLogSet {
+    // 总量
+    // @gotags: json:"total" bson:"total"
+    int64 total = 1;
+    // 数据
+    // @gotags: json:"items" bson:"items"
+    repeated OperateLog items = 2;
+}

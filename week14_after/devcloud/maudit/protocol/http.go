@@ -17,8 +17,8 @@ import (
 
 	"github.com/infraboard/mcube/app"
 
-	"github.com/go_8_mage/week14_after/devcloud/maudit/conf"
-	"github.com/go_8_mage/week14_after/devcloud/maudit/swagger"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/maudit/conf"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/maudit/swagger"
 )
 
 // NewHTTPService 构建函数
