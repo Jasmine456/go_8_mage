@@ -3,6 +3,7 @@ package cmd
 import (
 	"errors"
 	"fmt"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/client/rpc"
 	"os"
 	"os/signal"
 	"strings"
@@ -41,6 +42,14 @@ var serviceCmd = &cobra.Command{
 		if err := app.InitAllApp(); err != nil {
 			return err
 		}
+
+		// 获取一个mcenter客户端
+		mconf := rpc.NewConfig("127.0.0.1:18050", "HlyT6JSg88phswtgbNFoa7NB", "2wYf6oyT0w28jolDg0xtUdCtdE9SpT8s")
+		mc, err := rpc.NewClient(mconf)
+		if err != nil {
+			panic(err)
+		}
+		rpc.SetGlobal(mc)
 
 		conf := conf.C()
 		// 启动服务

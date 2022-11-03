@@ -3,7 +3,10 @@ package protocol
 import (
 	"context"
 	"fmt"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/apps/endpoint"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/client/rpc"
 	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/client/rpc/auth"
+	"github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter/client/rpc/tools"
 	"net/http"
 	"time"
 
@@ -40,11 +43,13 @@ func NewHTTPService() *HTTPService {
 	//2. 如果有100个微服务都需要接入到用户中心，都需要认证，每个模块独立维护一套 会带来很大维护成本，抽象成一个公共库
 	//3. 公共库：怎么保证公开哭的可用性，服务端和客户端能力拆开，需要单独验证客户端的 能否正常
 	//4. 服务端自己维护自己的中间件，服务端就是中间件的提供方 同时通过服务端
-	am, err := auth.NewAuther("127.0.0.1:18050")
+
+	am, err := auth.NewHttpAuther()
 	if err != nil {
+
 		panic(err)
 	}
-	r.Filter(am.GoRestfulAutherFun)
+	r.Filter(am.GoRestfulHttpAutherFun)
 
 	server := &http.Server{
 		ReadHeaderTimeout: 60 * time.Second,
@@ -61,6 +66,7 @@ func NewHTTPService() *HTTPService {
 		server: server,
 		l:      zap.L().Named("HTTP Service"),
 		c:      conf.C(),
+		mc:     rpc.C(),
 	}
 }
 
@@ -70,6 +76,7 @@ type HTTPService struct {
 	l      logger.Logger
 	c      *conf.Config
 	server *http.Server
+	mc     *rpc.ClientSet
 }
 
 func (s *HTTPService) PathPrefix() string {
@@ -81,6 +88,8 @@ func (s *HTTPService) Start() error {
 	// 装置子服务路由
 	app.LoadRESTfulApp(s.PathPrefix(), s.r)
 
+	//注册路由条目
+	s.registryEndpoint(context.Background())
 	// API Doc
 	config := restfulspec.Config{
 		WebServices:                   restful.RegisteredWebServices(), // you control what services are visible
@@ -113,17 +122,26 @@ func (s *HTTPService) Stop() error {
 }
 
 //注册功能列表
-func (s *HTTPService) registryEndpoint() {
+func (s *HTTPService) registryEndpoint(ctx context.Context) {
+
+	epss := []*endpoint.Entry{}
 	wss := s.r.RegisteredWebServices()
 	for i := range wss {
 		routes := wss[i].Routes()
 		eps := tools.TransferRoutesToEndpoints(routes)
-		fmt.Println(eps)
-		//for j:=range routes{
-		//	r:=routes[j]
-		//
-		//	fmt.Println(r.Metadata,r.Path,r.Metadata,r.Operation)
-		//}
-
+		epss = append(epss, eps...)
 	}
+
+	//	mcenter的客户端
+
+	req := endpoint.NewRegistryRequest("0.0.1", epss)
+	req.ClientId = s.mc.Config().ClientID
+	req.ClientSecret = s.mc.Config().ClientSecret
+	resp, err := s.mc.Endpoint().RegistryEndpoint(ctx, req)
+	if err != nil {
+		s.l.Errorf("registry endpoint error,%s", err)
+	} else {
+		s.l.Debugf("registry success,%s", resp)
+	}
+
 }

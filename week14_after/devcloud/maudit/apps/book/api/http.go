@@ -37,53 +37,93 @@ func (h *handler) Version() string {
 
 func (h *handler) Registry(ws *restful.WebService) {
 	tags := []string{"books"}
-
 	ws.Route(ws.POST("").To(h.CreateBook).
 		Doc("create a book").
 		Metadata(restfulspec.KeyOpenAPITags, tags).
-		//开启认证
-		Metadata(label.Auth,true).
-		//开启鉴权
-		Metadata(label.Resource,h.Name()).
-		//该接口操作操作的资源名称
-		Metadata(label.Permission,true).
-		//标注该资源的具体动态
-		Metadata(label.Action,label.Create).
+		// 开启认证
+		Metadata(label.Auth, true).
+		// 开启鉴权
+		Metadata(label.Permission, true).
+		// 该接口操作的资源名称
+		Metadata(label.Resource, h.Name()).
+		// 标注该资源的具体动态
+		Metadata(label.Action, label.Create.Value()).
+		//
 
 		Reads(book.CreateBookRequest{}).
 		Writes(response.NewData(book.Book{})))
 
 	ws.Route(ws.GET("/").To(h.QueryBook).
 		Doc("get all books").
+		//开启认证
+		Metadata(label.Auth, true).
+		//开启鉴权
+		Metadata(label.Permission, true).
+
 		Metadata(restfulspec.KeyOpenAPITags, tags).
-		Metadata("action", "list").
+		// 该接口操作的资源名称
+		Metadata(label.Resource, h.Name()).
+		// 标注该资源的具体动态
+		Metadata(label.Action, label.List.Value()).
 		Reads(book.CreateBookRequest{}).
 		Writes(response.NewData(book.BookSet{})).
 		Returns(200, "OK", book.BookSet{}))
 
 	ws.Route(ws.GET("/{id}").To(h.DescribeBook).
 		Doc("get a book").
+		//开启认证
+		Metadata(label.Auth, true).
+		//开启鉴权
+		Metadata(label.Permission, true).
 		Param(ws.PathParameter("id", "identifier of the book").DataType("integer").DefaultValue("1")).
 		Metadata(restfulspec.KeyOpenAPITags, tags).
+		// 该接口操作的资源名称
+		Metadata(label.Resource, h.Name()).
+		// 标注该资源的具体动态
+		Metadata(label.Action, label.Get.Value()).
 		Writes(response.NewData(book.Book{})).
 		Returns(200, "OK", response.NewData(book.Book{})).
 		Returns(404, "Not Found", nil))
 
 	ws.Route(ws.PUT("/{id}").To(h.UpdateBook).
 		Doc("update a book").
+		//开启认证
+		Metadata(label.Auth, true).
+		//开启鉴权
+		Metadata(label.Permission, true).
 		Param(ws.PathParameter("id", "identifier of the book").DataType("string")).
 		Metadata(restfulspec.KeyOpenAPITags, tags).
+		// 该接口操作的资源名称
+		Metadata(label.Resource, h.Name()).
+		// 标注该资源的具体动态
+		Metadata(label.Action, label.Update.Value()).
 		Reads(book.CreateBookRequest{}))
 
 	ws.Route(ws.PATCH("/{id}").To(h.PatchBook).
 		Doc("patch a book").
+		//开启认证
+		Metadata(label.Auth, true).
+		//开启鉴权
+		Metadata(label.Permission, true).
 		Param(ws.PathParameter("id", "identifier of the book").DataType("string")).
 		Metadata(restfulspec.KeyOpenAPITags, tags).
+		// 该接口操作的资源名称
+		Metadata(label.Resource, h.Name()).
+		// 标注该资源的具体动态
+		Metadata(label.Action, label.Update.Value()).
 		Reads(book.CreateBookRequest{}))
 
 	ws.Route(ws.DELETE("/{id}").To(h.DeleteBook).
 		Doc("delete a book").
+		//开启认证
+		Metadata(label.Auth, true).
+		//开启鉴权
+		Metadata(label.Permission, true).
 		Metadata(restfulspec.KeyOpenAPITags, tags).
+		// 该接口操作的资源名称
+		Metadata(label.Resource, h.Name()).
+		// 标注该资源的具体动态
+		Metadata(label.Action, label.Delete.Value()).
 		Param(ws.PathParameter("id", "identifier of the book").DataType("string")))
 }
 

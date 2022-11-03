@@ -10,6 +10,10 @@ import (
 
 func (h *handler) CreateBook(r *restful.Request, w *restful.Response) {
 	req := book.NewCreateBookRequest()
+	if req ==nil{
+		response.Failed(w.ResponseWriter, fmt.Errorf("请添加创建book参数"))
+		return
+	}
 	//需要拿到用户身份信息
 	//通过中间件已经知道，怎么才能知道中间件的返回结果
 	//在go restful 提供一个map attributes map[string]interface{} //for storing request-scoped values

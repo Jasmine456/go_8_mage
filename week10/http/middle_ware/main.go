@@ -29,6 +29,7 @@ func timeMiddleWare(net http.Handler) http.Handler {
 	// 通过HandlerFunc把一个 func(rw http.ResponseWriter,r *http.Request) 函数转为Handler
 	return http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
 		begin := time.Now()
+		//time.Sleep(2*time.Second)
 		net.ServeHTTP(rw, r)
 		timeElapsed := time.Since(begin)
 		log.Printf("request %s use %d ms\n", r.URL.Path, timeElapsed.Milliseconds())
@@ -69,6 +70,7 @@ func (router *Router) Use(m middleware) {
 
 func (router *Router) Add(path string, handler http.Handler) {
 	var mergedHandler = handler
+	//var mergedHandler http.Handler
 	for i := (len(router.middlewareChain) - 1); i >= 0; i-- {
 		mergedHandler = router.middlewareChain[i](mergedHandler) //中间件层层嵌套
 	}

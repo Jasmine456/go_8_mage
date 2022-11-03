@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/BurntSushi/toml v1.2.1
-	github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter v0.0.0-20221026060511-2591916bb88e
+	github.com/Jasmine456/go_8_mage/week14_after/devcloud/mcenter v0.0.0-20221102113936-cf88901c6bc8
 	github.com/caarlos0/env/v6 v6.10.1
 	github.com/emicklei/go-restful-openapi v1.4.1
 	github.com/emicklei/go-restful-openapi/v2 v2.9.1
