@@ -80,7 +80,7 @@ func MakeBearer(lenth int) string {
 func NewIssueTokenRequest() *IssueTokenRequest {
 	return &IssueTokenRequest{
 		// 单位秒
-		ExpiredAt: 60,
+		ExpiredAt: 60*60,
 	}
 }
 
@@ -108,4 +108,15 @@ func NewValidateTokenRequest(ak string) *ValidateTokenRequest {
 	return &ValidateTokenRequest{
 		AccessToken: ak,
 	}
+}
+
+func NewDefaultToken() *Token {
+	return &Token{
+		Status:   NewStatus(),
+		Location: NewLocation(),
+	}
+}
+
+func NewLocation() *Location {
+	return &Location{}
 }

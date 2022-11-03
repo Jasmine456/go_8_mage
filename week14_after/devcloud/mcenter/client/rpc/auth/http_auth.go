@@ -10,6 +10,7 @@ import (
 	"github.com/infraboard/mcube/http/response"
 	"github.com/infraboard/mcube/logger"
 	"github.com/infraboard/mcube/logger/zap"
+	"net/http"
 )
 
 // 给服务端提供的Restful接口的 认证鉴权中间件
@@ -33,6 +34,15 @@ type HttpAuther struct {
 
 // 是否开启权限的控制，交给中间件使用方去决定
 func (a *HttpAuther) GoRestfulHttpAutherFun(req *restful.Request, resp *restful.Response, next *restful.FilterChain) {
+
+	//测试
+	//var b=req.Request.Body
+	//fmt.Printf("%v\n,%t\n,%T\n",b,b,b)
+
+	if req.Request.Body == http.NoBody{
+		response.Failed(resp.ResponseWriter, fmt.Errorf("body 为空"))
+		return
+	}
 
 	// 请求拦截
 	route:=req.SelectedRoute()
