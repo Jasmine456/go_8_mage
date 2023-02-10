@@ -27,6 +27,7 @@ func Prod(a, b int) int{
 	return a * b
 }
 
+
 //Deprecated: Div 不要再调用了
 func Div(a, b int) int{
 	return a / b

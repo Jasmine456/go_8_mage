@@ -6,6 +6,7 @@ import (
 	"strconv"
 )
 
+// 哈希接口
 // 把每一个特征的每一个取值映射到[0, 2^64]上，几乎保证不同的特征取值映射后也不同
 type Transformer interface {
 	Hash(string,int) uint64

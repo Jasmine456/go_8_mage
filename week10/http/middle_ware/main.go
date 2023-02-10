@@ -23,6 +23,7 @@ func getMan(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("hi man"))
 }
 
+
 //中间件逻辑
 //超时中间件
 func timeMiddleWare(net http.Handler) http.Handler {

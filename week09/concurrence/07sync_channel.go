@@ -7,12 +7,14 @@ import (
 
 var syncChann = make(chan int)
 
+// 从管道取(拿)
 func takeFromSyncChann() {
 	if v, ok := <-syncChann; ok { // ok==true 说明管道还没有关闭close
 		fmt.Printf("take %d from syncchronous channel\n", v)
 	}
 }
 
+// 放入管道
 func putToSyncChann() {
 	defer func() {
 		if err := recover(); err != nil {

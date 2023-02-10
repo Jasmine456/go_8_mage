@@ -6,6 +6,7 @@ import (
 	"time"
 )
 
+//离散化接口
 type Discretizer interface {
 	//把特征取值转成字符串
 	Discretize(i interface{}) string

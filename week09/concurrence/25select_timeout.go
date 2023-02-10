@@ -75,7 +75,7 @@ func Handle3() {
 }
 
 func Handle4() {
-	// 借助于带超市的context来实现对函数的超时控制
+	// 借助于带超时的context来实现对函数的超时控制
 	ctx, cancel := context.WithTimeout(context.Background(), Timeout)
 	defer cancel() //纯粹处于良好习惯，函数退出前调用cancel()
 	workDone := make(chan struct{}, 1)

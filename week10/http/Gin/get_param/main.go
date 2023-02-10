@@ -76,7 +76,7 @@ func formBind(engine *gin.Engine) {
 	engine.POST("/stu/form", func(ctx *gin.Context) {
 		var stu Student
 		// 跟ShouldBind对应的是MustBind。MustBind内部会调用ShouldBind，
-		//如果ShouldBind发生error会直接c.AbortWithError(http.StatusBadRequest,err)
+		// 如果ShouldBind发生error会直接c.AbortWithError(http.StatusBadRequest,err)
 		if err := ctx.ShouldBind(&stu); err != nil {
 			fmt.Println(err)
 			ctx.String(http.StatusBadRequest, "parse paramter failed")

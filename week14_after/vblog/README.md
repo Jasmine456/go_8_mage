@@ -9,6 +9,26 @@
     + 前端框架:vue3, vue-router
     + UI组件: arcoUI(头条2021-12开源的vue3 UI组件库)
 
+```TEXT
+npm init vue@latest
+Need to install the following packages:
+  create-vue@3.3.4
+Ok to proceed? (y) y
+
+Vue.js - The Progressive JavaScript Framework
+
+✔ Project name: … ui
+✔ Add TypeScript? … No 
+✔ Add JSX Support? … No 
+✔ Add Vue Router for Single Page Application development? …  Yes
+✔ Add Pinia for state management? …  Yes
+✔ Add Vitest for Unit Testing? … No  单元测试
+✔ Add Cypress for both Unit and End-to-End testing? … No 场景测试
+✔ Add ESLint for code quality? …  Yes
+✔ Add Prettier for code formatting? …  Yes
+```
+
+
 ## 设计
 
 省略了需求的收集

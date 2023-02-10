@@ -208,7 +208,7 @@ func authLogin() {
 }
 
 func main() {
-	//simpleGet()
+	simpleGet()
 	//simplePost()
 	//postForm()
 	//head()
@@ -218,5 +218,5 @@ func main() {
 	//requestFood()
 	//requestPanic()
 
-	authLogin()
+	//authLogin()
 }

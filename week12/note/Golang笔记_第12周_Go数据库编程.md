@@ -71,7 +71,7 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 docker 启动mysql：
 docker run -p 3306:3306 --name 8_mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql:8.0
 容器内不支持中文问题：
-docker exec -it mysql_test env LANG=C.UTF-8 /bin/bash
+docker exec -it 8_mysql env LANG=C.UTF-8 /bin/bash
 ```
 
 

@@ -44,7 +44,7 @@ func f(args ...float64)(float64,error){
 	if err1!=nil{
 		return 0,err1
 	}
-	part2,err2:=f(remain...)//把切片转为不定长参数
+	part2,err2:=f(remain...)//把切片转为不定长参O数
 
 	if err2!=nil{
 		return 0,err2

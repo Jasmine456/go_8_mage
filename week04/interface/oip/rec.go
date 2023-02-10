@@ -11,8 +11,11 @@ import (
 )
 
 type Recommender struct{
+	//召回
 	Recallers []recall.Recaller
+	//排序
 	Sorter sort.Sorter
+	//过滤
 	Filters []filter.Filter
 }
 
